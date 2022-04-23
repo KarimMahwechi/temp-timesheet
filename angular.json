@@ -40,7 +40,9 @@
               "src/assets/js/scripts.js",
               "src/assets/js/app.min.js",
               "src/assets/js/custom.js",
-              "src/assets/bundles/prism/prism.js"
+              "src/assets/bundles/prism/prism.js",
+              "src/assets/js/page/forms-advanced-forms.js",
+              "assets/bundles/select2/dist/js/select2.full.min.js"
               
             ]
           },

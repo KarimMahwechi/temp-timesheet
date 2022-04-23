@@ -9,18 +9,131 @@
         </p>
         <div class="row">
           <div class="col-12 col-md-6 col-lg-9">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h4>Card Header</h4>
-                <button class="btn btn-outline-info mb-2 me-2" (click)="openScrollableContent(longContent)"><i class="fa-solid fa-plus"></i>Dépense</button>
-                <button class="btn btn-outline-info mb-2 me-2" (click)="openScrollableContent1(longContent1)"><i class="fa-solid fa-plus"></i>Frais kilométrique</button>
+            <div class="card card-light">
+              <div class="card-header" style="margin-top:3%;">
+                <h3> Liste de mes dépenses</h3>
               </div>
-              <br>
               
               <div class="card-body">
+                <button class="btn btn-outline-info mb-2 me-2" (click)="openScrollableContent(longContent)"><i class="fa-solid fa-plus"></i>Dépense</button>
+                <button class="btn btn-outline-info mb-2 me-2" (click)="openScrollableContent1(longContent1)"><i class="fa-solid fa-plus"></i>Frais kilométrique</button>
+                  <!---->
+                    <table>
+                      <tr>
+                        <td>
+                          <form class="form-inline ">
+                            <div class="search-element">
+                              <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+                              <button class="btn btn-light mb-1 me-12" type="submit">
+                                <i class="fas fa-search"></i>
+                              </button>
+                            </div>
+                          </form>
+                        </td>
+                        <!-- RADIO BUTTON -->
+                        <td>
+                          <label class="custom-switch">
+                            <input type="radio" name="option" value="1" class="custom-switch-input" checked >
+                            <span class="custom-switch-indicator"></span>
+                            <span class="custom-switch-description">Option 1</span>
+                          </label>
+                        </td>
+                        <td>
+                          <label class="custom-switch">
+                            <input type="radio" name="option" value="2" class="custom-switch-input">
+                            <span class="custom-switch-indicator"></span>
+                            <span class="custom-switch-description">Option 2</span>
+                          </label>
+                        </td>
+                        <td>
+                          <label class="custom-switch">
+                            <input type="radio" name="option" value="3" class="custom-switch-input">
+                            <span class="custom-switch-indicator"></span>
+                            <span class="custom-switch-description">Option 3</span>
+                          </label>
+                        </td>  
+                        <!-- RADIO BUTTON -->
+                      </tr>
+                    </table>
+                    <table>
+                      <tr>
+                          <td>
+                            <div class="form-group" data-width="160">
+                              <label>Catégorie de la dépenses</label>
+                              <select class="form-control">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                                <option>Option 4</option>
+                                <option>Option 5</option>
+                                <option>Option 6</option>
+                              </select>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group" data-width="160">
+                              <label>Facturable / Non facturable</label>
+                              <select class="form-control selectric">
+                                <option>Facturable</option>
+                                <option>Non facturable</option>
+                              </select>
+                           </div> 
+                          </td>
+                          <td>
+                             <div class="form-group" data-width="160">
+                                <label>Remboursable / Non remboursable</label>
+                                <select class="form-control selectric">
+                                  <option>Remboursable</option>
+                                  <option>Non remboursable</option>
+                                </select>
+                             </div> 
+                          </td>
+                          <td>
+                            <div class="form-group" data-width="160">
+                               <label>Etat de la dépenses</label>
+                               <select class="form-control selectric">
+                                 <option>Option 1</option>
+                                 <option>Option 2</option>
+                                 <option>Option 3</option>
+                                 <option>Option 4</option>
+                                 <option>Option 5</option>
+                                 <option>Option 6</option>
+                               </select>
+                            </div> 
+                         </td>
+                         <td>
+                          <div class="form-group" data-width="160">
+                             <label>Tags</label>
+                             <select class="form-control selectric">
+                               <option>Option 1</option>
+                               <option>Option 2</option>
+                               <option>Option 3</option>
+                               <option>Option 4</option>
+                               <option>Option 5</option>
+                               <option>Option 6</option>
+                             </select>
+                          </div> 
+                       </td>
+                      </tr>
+                    </table>
+                  <!---->
+                  <div class="form-group">                     
+                    <form>
+                      <br>
+                      <div class="search-element">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+                        <button class="btn btn-outline-info mb-1 me-1" type="submit">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                
+
                 <p>Card <code>.card-primary</code></p>
                 <button class="btn btn-primary">Submit</button>
               </div>
+              
               <div class="card-footer text-right">
                 <button class="btn btn-primary">Submit</button>
               </div>
@@ -95,8 +208,54 @@
                   <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
                 </div>
                 <div class="modal-body">
-                  <h1>Aasleeema</h1>
-                </div>
+                <!-- BEGIN : MODEL 1 -->
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Email</label>
+                          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputPassword4">Password</label>
+                          <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputAddress">Address</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputAddress2">Address 2</label>
+                        <input type="text" class="form-control" id="inputAddress2"
+                          placeholder="Apartment, studio, or floor">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputCity">City</label>
+                          <input type="text" class="form-control" id="inputCity">
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputState">State</label>
+                          <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <label for="inputZip">Zip</label>
+                          <input type="text" class="form-control" id="inputZip">
+                        </div>
+                      </div>
+                      <div class="form-group mb-0">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="gridCheck">
+                          <label class="form-check-label" for="gridCheck">
+                            Check me out
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                <!-- END : MODEL 2 -->
+                
                 <div class="modal-footer">
                   <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
                   <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Save</button>
