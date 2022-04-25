@@ -1,4 +1,4 @@
-import { Component, OnInit , ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnInit , ViewChild, ViewEncapsulation } from '@angular/core';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 @Component({
@@ -16,15 +16,61 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     .light-blue-backdrop {
       background-color: #5cb3fd;
     }
+    .badge {
+      border-radius:12px;
+    }
+    .main-content{
+      width:90%;
+      background-color:red;
+    }
+    section.section{
+      width:100%;
+      height:100%;
+      
+    }
+    .section-body{
+      width:100%;
+    }
   `]
 })
 
 export class ExpensesComponent implements OnInit {
   closeResult :any ="" ;
+  isDisabled = true;
+  urlFile : any =""
+
+  public fieldArray: Array<any> = [];
+  private newAttribute: any = {};
 
   constructor(private modalService: NgbModal) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
+  }
+
+  @ViewChild('taxValue') taxValue!:ElementRef;
+  triggerSomeEvent() {
+    this.isDisabled = !this.isDisabled;
+    this.taxValue.nativeElement.value =null;
+    console.log(this.taxValue.nativeElement.value);
+    return;
+  }
+
+  onSelectFile(e:any){
+    if (e.target.files){
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload=(event:any)=>{
+        this.urlFile=event.target.result;
+      }
+    }
+  }
+  addFieldValue() {
+      this.fieldArray.push(this.newAttribute)
+      this.newAttribute = {};
+  }
+
+  deleteFieldValue(index:any) {
+      this.fieldArray.splice(index, 1);
   }
 
   openBackDropCustomClass(content : any ) {

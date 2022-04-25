@@ -10,6 +10,7 @@ import { ResetPasswordComponent } from './authentication/reset-password/reset-pa
 import { ForgetPasswordComponent } from './authentication/forget-password/forget-password.component';
 import { ExpensesComponent } from './spending-management/expenses/expenses.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

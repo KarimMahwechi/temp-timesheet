@@ -33,7 +33,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/font-awesome/css/font-awesome.css"
+              "node_modules/font-awesome/css/font-awesome.css",
+              "src/assets/bundles/datatables/datatables.min.css",
+              "src/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css"
               
             ],
             "scripts": [
@@ -42,7 +44,12 @@
               "src/assets/js/custom.js",
               "src/assets/bundles/prism/prism.js",
               "src/assets/js/page/forms-advanced-forms.js",
-              "assets/bundles/select2/dist/js/select2.full.min.js"
+              "src/assets/bundles/select2/dist/js/select2.full.min.js",
+              "src/assets/bundles/datatables/datatables.min.js",
+              "src/assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js",
+              "src/assets/bundles/jquery-ui/jquery-ui.min.js",
+              "src/assets/js/page/datatables.js"
+   
               
             ]
           },
