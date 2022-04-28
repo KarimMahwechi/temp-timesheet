@@ -5,7 +5,9 @@ import { ResetPasswordComponent } from './authentication/reset-password/reset-pa
 import { SignInComponent } from './authentication/sign-in/sign-in.component';
 import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { AsideBarComponent } from './elements/aside-bar/aside-bar.component';
+import { ExpenseComponent } from './spending-management/expense/expense.component';
 import { ExpensesComponent } from './spending-management/expenses/expenses.component';
+import { TestTableComponent } from './tests/test-table/test-table.component';
 
 
 const routes: Routes = [
@@ -14,7 +16,10 @@ const routes: Routes = [
   {path:'forget-pswd',component:ForgetPasswordComponent},
   {path:'reset-pswd',component:ResetPasswordComponent},
   {path:'aside',component:AsideBarComponent},
-  {path:'',component:ExpensesComponent}
+  {path:'',component:TestTableComponent},
+  {path:'exp',component:ExpensesComponent},
+  {path:'e',component:ExpenseComponent}
+
   
 ];
 

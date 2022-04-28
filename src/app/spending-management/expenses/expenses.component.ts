@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit , ViewChild, ViewEncapsulation } from '@angular/core';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbAccordionConfig} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
@@ -19,18 +19,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     .badge {
       border-radius:12px;
     }
-    .main-content{
-      width:90%;
-      background-color:red;
-    }
-    section.section{
-      width:100%;
-      height:100%;
-      
-    }
-    .section-body{
-      width:100%;
-    }
+    
   `]
 })
 
@@ -39,12 +28,45 @@ export class ExpensesComponent implements OnInit {
   isDisabled = true;
   urlFile : any =""
 
+  expensesList: Array<{id: string , date: string, description: string, categorie:string,ville:string,noteFrais:string,montant:string,aRembourser:boolean,tva:string,etat:string}> = [
+    {id : "1", date: "20/03/2022", description: "Desc 1 ", categorie:"Avion",ville:"Djerba",noteFrais:"Note 1",montant:"1500",aRembourser:true,tva:"12500",etat:"Verfiée"},
+    {id : "2", date: "05/11/2022", description: "Desc 2 ", categorie:"Carburant",ville:"Tunisie",noteFrais:"Note 2",montant:"8700",aRembourser:false,tva:"17500",etat:"En attente"},
+    {id : "3", date: "17/02/2022", description: "Desc 3 ", categorie:"Internet",ville:"Bizerte",noteFrais:"Note 3",montant:"6300",aRembourser:true,tva:"9000",etat:"Rejetée"},
+    {id : "4", date: "10/04/2022", description: "Desc 4 ", categorie:"Restauration",ville:"Sfax",noteFrais:"Note 4",montant:"9900",aRembourser:false,tva:"26500",etat:"En attente"},
+    {id : "5", date: "29/12/2022", description: "Desc 5 ", categorie:"Peage",ville:"Touzeur",noteFrais:"Note 5",montant:"3400",aRembourser:false,tva:"39100",etat:"Verfiée"}
+  ]
+  categorie : string ="";
+  ville : string ="";
+  id : string =""
+  p : number = 1;
+  key : string ='id';
+  reverse : boolean = false;
+
   public fieldArray: Array<any> = [];
   private newAttribute: any = {};
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal,private configAccor:NgbAccordionConfig) {}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.expensesList = [
+      {id : "1", date: "20/03/2022", description: "Desc 1 ", categorie:"Avion",ville:"Djerba",noteFrais:"Note 1",montant:"1500",aRembourser:true,tva:"12500",etat:"Verfiée"},
+      {id : "2", date: "05/11/2022", description: "Desc 2 ", categorie:"Carburant",ville:"Tunisie",noteFrais:"Note 2",montant:"8700",aRembourser:false,tva:"17500",etat:"En attente"},
+      {id : "3", date: "17/02/2022", description: "Desc 3 ", categorie:"Internet",ville:"Bizerte",noteFrais:"Note 3",montant:"6300",aRembourser:true,tva:"9000",etat:"Rejetée"},
+      {id : "4", date: "10/04/2022", description: "Desc 4 ", categorie:"Restauration",ville:"Sfax",noteFrais:"Note 4",montant:"9900",aRembourser:false,tva:"26500",etat:"En attente"},
+      {id : "5", date: "29/12/2022", description: "Desc 5 ", categorie:"Peage",ville:"Touzeur",noteFrais:"Note 5",montant:"3400",aRembourser:false,tva:"39100",etat:"Verfiée"}
+    ]
+  }
+
+  Search(){
+    if (this.id==''){
+      this.ngOnInit()
+    }else{this.expensesList = this.expensesList.filter(res => {
+      return res.id.toLocaleLowerCase().match(this.id.toLocaleLowerCase());
+    })
+    }
+  } 
+  sortField(key:any){
+    this.key = key ;
+    this.reverse = !this.reverse;
   }
 
   @ViewChild('taxValue') taxValue!:ElementRef;

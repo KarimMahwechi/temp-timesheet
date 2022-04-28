@@ -2,10 +2,10 @@
 <body>
   <div class="loader"></div>
   <div id="app"><div class="main-content">
-    <section class="section">
+    <section class="section" style="margin-top:-2%;">
       <div class="section-body">
         <div class="row">
-          <div class="col-12 col-md-6 col-lg-9">
+          <div class="col-12 col-md-6 col-lg-12">
             <div class="card card-light">
               <div class="card-header" style="margin-top:3%;">
                 <h3> Liste de mes dépenses</h3>
@@ -19,12 +19,15 @@
                       <tr>
                         <td>
                           <form class="form-inline ">
-                            <div class="search-element">
-                              <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+                            <!--<div class="search-element">
+                              <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250" [(ngModel)] ="categorie" (ngModelChange)="Search()">
                               <button class="btn btn-light mb-1 me-12" type="submit">
                                 <i class="fas fa-search"></i>
                               </button>
-                            </div>
+                            </div>-->
+                            <td>
+                              <input class="form-control" type="text" placeholder="Search" data-width="250" [(ngModel)] ="id" (ngModelChange)="Search()">
+                            </td>
                           </form>
                         </td>
                         <!-- RADIO BUTTON -->
@@ -49,9 +52,11 @@
                             <span class="custom-switch-description">Approuvé</span>
                           </label>
                         </td>  
-                        <!-- RADIO BUTTON -->
+                       <!-- RADIO BUTTON -->
                       </tr>
+                      
                     </table>
+
                     <table>
                       <tr>
                           <td>
@@ -115,54 +120,53 @@
                       </tr>
                     </table>
                   <!--***-->
+                  <!--////////////////////////////////////////////////  TABLE ////////////////////////// 
                           <div class="table-responsive">
-                            <table class="table table-striped" id="table-1">
+                            <table class="table table-borderless">
                               <thead>
                                 <tr>
-                                  <th class="text-center">
-                                    #
-                                  </th>
-                                  <th>Date</th>
-                                  <th>Description</th>
-                                  <th>Catégorie</th>
-                                  <th>Ville</th>
-                                  <th>Note de frais</th>
-                                  <th>Montant TTC</th>
-                                  <th>R</th>
-                                  <th>TVA</th>
+                                  <th >Date</th>
+                                  <th >Description</th>
+                                  <th >Catégorie</th>
+                                  <th >Ville</th>
+                                  <th >Note de frais</th>
+                                  <th >Montant TTC</th>
+                                  <th >R</th>
+                                  <th >TVA</th>
                                   <th></th>
+                                  <th >Etat</th>
                                   <th>Action</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td > 1</td>
-                                  <td>Create a mobile app</td>
-                                  <td class="align-middle">
-                                    <div class="progress progress-xs">
-                                      <div class="progress-bar bg-success width-per-40">
-                                      </div>
-                                    </div>
+                                <tr *ngFor="let expenses of expensesList |orderBy: key: reverse | paginate: {itemsPerPage: 3 , currentPage : p} ;">
+                                  <td> {{ expenses.date }}</td>
+                                  <td> {{ expenses.description }} </td>
+                                  <td>
+                                      {{ expenses.categorie }} 
                                   </td>
                                   <td>
-                                    <img alt="image" src="assets/img/users/user-5.png" width="35">
+                                      {{ expenses.ville }} 
                                   </td>
-                                  <td>2018-01-20</td>
+                                  <td>{{ expenses.noteFrais }}</td>
+
+                                  <td>{{ expenses.montant }}</td>
+                                  <td>{{ expenses.aRembourser }}</td>
+                                  <td>{{ expenses.tva }}</td>
+                                  <td>Inv</td> 
                                   <td>
-                                    <div class="badge badge-success badge-shadow">Completed</div>
+                                    <div class="badge badge-success badge-shadow">{{ expenses.etat }}</div>
                                   </td>
-                                  <td><a href="#" class="btn btn-primary">Detail</a></td>
-                                  <td>R</td>
-                                  <td><a href="#" class="btn btn-primary">Detail</a></td>
-                                  <td>Inv</td>
-                                  <td><a href="#" class="btn btn-primary">Detail</a></td>
-                                  
+                                  <td><a href="#" class="btn btn-primary">Detail</a></td>                                 
                                 </tr> 
                               </tbody>
+                              <pagination-controls (pageChange)="p = $event"></pagination-controls>
                             </table>
                           </div>
+                          ////////////////////////////////////////////////  TABLE ////////////////////////// -->
   
                   <!--***-->
+                  <!-- 
                   <div class="form-group">                     
                     <form>
                       <br>
@@ -178,11 +182,14 @@
 
                 <p>Card <code>.card-primary</code></p>
                 <button class="btn btn-primary">Submit</button>
+                -->
               </div>
-              
+              <!--
               <div class="card-footer text-right">
                 <button class="btn btn-primary">Submit</button>
               </div>
+            -->
+
               <div class="card-body">
               <!-- BEGIN : MODEL TEMPLATE ( Expenses )-->
               <ng-template #content let-modal>

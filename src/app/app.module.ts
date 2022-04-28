@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,11 @@ import { ForgetPasswordComponent } from './authentication/forget-password/forget
 import { ExpensesComponent } from './spending-management/expenses/expenses.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { TestTableComponent } from './tests/test-table/test-table.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { ExpenseComponent } from './spending-management/expense/expense.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +26,19 @@ import { FormsModule } from '@angular/forms';
     AsideBarComponent,
     ResetPasswordComponent,
     ForgetPasswordComponent,
-    ExpensesComponent
+    ExpensesComponent,
+    TestTableComponent,
+    ExpenseComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    Ng2OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
