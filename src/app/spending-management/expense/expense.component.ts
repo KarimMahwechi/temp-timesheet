@@ -57,7 +57,12 @@ import {NgbModal, ModalDismissReasons, NgbAccordionConfig, NgbActiveModal} from 
       margin:1px;
       padding:1px;
     }
-    
+    h6{
+      margin-top:5px;
+      margin-bottom:0px;
+      font-size:14px;
+    }
+
   `]
 })
 export class ExpenseComponent implements OnInit {
@@ -91,7 +96,7 @@ export class ExpenseComponent implements OnInit {
   /** */
   closeResult :any ="" ;
   isDisabled = false;
-  urlFile : any ="src/assets/img/Digital personal files-pana.png";
+  urlFile : any ="src/assets/img/noFile.png";
   /** */
   public fieldArray: Array<any> = [];
   private newAttribute: any = {};
