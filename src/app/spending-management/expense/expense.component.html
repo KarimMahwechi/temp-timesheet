@@ -285,10 +285,12 @@
                                 <div class="card-body">
                                     <!-- BEGIN : MODEL TEMPLATE ( Expenses )-->
                                     <ng-template #content let-modal>
-                                    <div class="modal-header modal-xl">
-                                        <h4 class="modal-title">Ajouter une dépense</h4>
-                                        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-                                    </div>
+                                        <div class="modal-header">
+                                            <div class="form-group col-md-9" style="margin-bottom:0%;">
+                                                <label class="modal-title" style="font-size: 16px;">Ajouter une dépense</label>                         
+                                            </div>            
+                                            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                                        </div>
                                     <!--BEGIN : LARGE MODEL-->                           
                                     
                                         <!--
@@ -567,8 +569,10 @@
                                     </ng-template>
                                     
                                     <ng-template #longContent let-modal>
-                                    <div class="modal-header modal-lg">
-                                        <h4 class="modal-title">Ajouter une dépense</h4>
+                                    <div class="modal-header">
+                                        <div class="form-group col-md-9" style="margin-bottom:0%;">
+                                            <label class="modal-title" style="font-size: 16px;">Ajouter une dépense</label>                         
+                                        </div>            
                                         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
                                     </div>
                                     <div class="modal-body">
@@ -758,8 +762,7 @@
                                     <div class="modal-header">
                                         <div class="form-group col-md-9" style="margin-bottom:0%;">
                                             <label class="modal-title" style="font-size: 16px;">Ajouter frais kilométriques</label>                         
-                                        </div>
-                                        
+                                        </div>            
                                         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
                                     </div>
                                     
