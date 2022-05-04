@@ -24,14 +24,19 @@
                                             <button class="btn btn-sm btn-outline-warning mb-2 me-6" (click)="openScrollableContent(longContent)"><i class="fa-solid fa-plus"></i>Dépense</button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-outline-primary mb-2 me-2" (click)="openXl(content)">Extra large modal</button>
+                                            <button class="btn btn-lg btn-outline-info mb-2 me-2" (click)="openXl(content)"><i class="fa-solid fa-plus"></i>Dépense</button>
                                         </td>
-                                        <td>
+                                       <!--<td>
                                             <button class="btn btn-lg btn-outline-info mb-2 me-4" (click)="openScrollableContent1(longContent1)" ><i class="fa-solid fa-plus"></i>Frais kilométrique</button>
+                                        </td>-->
+                                        <td>
+                                            <button class="btn btn-lg btn-outline-info mb-2 me-6" (click)="openXl(content1)"><i class="fa-solid fa-plus"></i>Frais kilométrique</button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-outline-primary mb-2 me-2" (click)="openXl(content)">Large modal</button>
+                                           <!-- <button class="btn btn-sm btn-light" (click)="openSm(content2)"><i class="fa-solid fa-circle-plus" style="color:#7C83FD;"></i></button> -->
+                                           <button class="btn btn-lg btn-outline-info mb-2 me-6" (click)="openLg(content2)"><i class="fa-solid fa-plus"></i>Ajouter note frais</button>
                                         </td>
+                                        
                                         <!-- RADIO BUTTON -->
                                         <td>
                                             <label class="custom-switch">
@@ -58,6 +63,7 @@
                                         </tr>
                                         
                                     </table>
+                                    <app-second-modal></app-second-modal>
                                     <!---->
                                     <ngb-accordion #acc="ngbAccordion" style="width:100%">
                                         <ngb-panel id="toggle-2" title="Filtres Standards" hidden="">
@@ -246,7 +252,36 @@
                             </font>
                             </div>
                             <!---->
-                                                
+                                
+                                <!-- BEGIN : MODEL TEMPLATE ( Expenses )-->
+                                    <ng-template #content2 let-modal>
+
+                                    <div class="modal-header modal-lg">
+                                        <div class="form-group col-md-9" style="margin-bottom:0%;">
+                                            <label class="modal-title" style="font-size: 16px;">Ajouter une note frais</label>                         
+                                        </div>
+                                        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                                    </div>
+
+                                    <div class="form-row" style="margin:20px;">
+                                        <!--BEGIN : Départ-->
+                                                <div class="form-group col-md-6">
+                                                <label style="font-size:14px;">Titre note frais</label>
+                                                <input type="text" class="form-control " id="" >
+                                                </div>
+                                                <!-- END : Départ -->
+                                                <!-- BEGIN : Arrivée -->
+                                                <div class="form-group col-md-6">
+                                                <label style="font-size:14px;" >Description note frais </label>
+                                                <input type="text" class="form-control" id="" >
+                                                </div>
+                                        <!-- END : Arrivée -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Annuler</button>
+                                        <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Sauvegarder</button>
+                                    </div>
+                                    </ng-template>
                                 <div class="card-body">
                                     <!-- BEGIN : MODEL TEMPLATE ( Expenses )-->
                                     <ng-template #content let-modal>
@@ -355,7 +390,7 @@
                                                             <div class="input-group mb-3">
                                                                 <input type="text" class="form-control form-control-sm" placeholder="Note de frais" aria-label="">
                                                                 <div class="input-group-append">
-                                                                <button class="btn btn-sm btn-light" type="submit"><i class="fa-solid fa-circle-plus" style="color:#7C83FD;"></i></button>
+                                                                <button class="btn btn-sm btn-light" (click)="openSm(content2)"><i class="fa-solid fa-circle-plus" style="color:#7C83FD;"></i></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -364,7 +399,7 @@
                                                 <!--END : First Card -->
                                                 <!--BEGIN : Second Card -->
                                                 <div class="col-4 col-md-6 col-lg-4">
-                                                    <div class="card " id="card1" style="margin-left:-20px;margin-right:-20px;">
+                                                    <div class="card " id="card1" style="margin-left:-20px;margin-right:-20px;height:100%;">
                                                         <div class="card-body" style="margin-top:0%;">
                                                             <!--Note-->
                                                             <label style="font-size:14px;" >Commentaire</label>
@@ -710,7 +745,7 @@
                                         <!-- END : MODEL 1 -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Annuler</button>
-                                        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Sauvegarder</button>
+                                        <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Sauvegarder</button>
                                     </div>
                         
                                     </ng-template>
@@ -721,14 +756,239 @@
                     
                                     <ng-template #content1 let-modal>
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Modal title</h4>
+                                        <div class="form-group col-md-9" style="margin-bottom:0%;">
+                                            <label class="modal-title" style="font-size: 16px;">Ajouter frais kilométriques</label>                         
+                                        </div>
+                                        
                                         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
                                     </div>
-                                    <div class="modal-body">
-                                        <p>One fine body&hellip;</p>
+                                    
+                                    <!--////////////////////////////////////////////////////////////-->
+                                    <div class="row">
+                                         <!--First Card -->
+                                            <div class="col-4 col-md-6 col-lg-4">
+                                                <div class="card " id="card1" style="margin-left:3px;">
+                                                    
+                                                    <div class="card-body" style="margin-top:0%;">
+                                                        <div class="form-row">
+                                                            <!---->
+                                                            <div class="pretty p-switch p-fill" style="position: absolute; right: 20px;">
+                                                                <input type="checkbox" />
+                                                                <div class="state p-info">
+                                                                    <label>Facturable au client</label>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                            <!---->
+                                                            <div class="form-group col-md-12">    
+                                                                <label style="font-size:14px; margin-top:8%;" >Titre</label>  
+                                                                <input type="text" class="form-control " id="inputTitre" placeholder="Titre">
+                                                            </div>
+                                                        </div>  
+                                                        <!-- BEGIN : Depart / Arrivée -->
+                                                        <div class="form-row">
+                                                            <!--BEGIN : Départ-->
+                                                            
+                                                            <div class="form-group col-md-6">
+                                                            <label style="font-size:14px;">Départ</label>
+                                                            <input type="text" class="form-control " id="" placeholder="De">
+                                                            </div>
+                                                            <!-- END : Départ -->
+                                                            <!-- BEGIN : Arrivée -->
+                                                            <div class="form-group col-md-6">
+                                                            <label style="font-size:14px;" >Arrivée</label>
+                                                            <input type="text" class="form-control" id="" placeholder="À">
+                                                            </div>
+                                                            <!-- END : Arrivée -->
+                                                        </div>
+                                                        <!-- END : Depart / Arrivée -->
+                                                        <!-- BEGIN : Trajet -->
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                            <label style="font-size:14px;">Trajet</label>
+                                                            <div class="input-group">
+                                                                <input type="number" class="form-control " placeholder="1" min="1">
+                                                                <select class="custom-select " id="inputGroupSelect">
+                                                                <option value="1" selected>Aller</option>
+                                                                <option value="2">Retour</option>
+                                                                <option value="3">Aller / Retour</option>
+                                                                </select>
+                                                            </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                            <label>.</label>
+                                                            <div class="input-group ">
+                                                                <input type="number" class="form-control " placeholder="120" min="10" max="180">
+                                                                <input type="text" class="form-control " value="KM" disabled>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--END : Trajet-->
+                                                        <!--BEGIN : Total -->
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                            <label style="font-size:14px;">Total</label>
+                                                            <div class="input-group">
+                                                                <input type="number" class="form-control" placeholder="196" min="1" disabled>
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">
+                                                                        KM
+                                                                    </div>
+                                                                    </div>
+                                                            </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                            <label>.</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="125.000" min="1" disabled>
+                                                                <div class="input-group-prepend">
+                                                                <div class="input-group-text">
+                                                                    DT
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--END : Total-->
+                                                        <!-- BEGIN : Tarif -->
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                            <label style="font-size:14px;">Tarification</label>
+                                                            <div class="input-group">
+                                                                <input type="number" class="form-control" placeholder="3.750 DT" min="1">
+                                                            </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                            <label>.</label>
+                                                            <div class="input-group">
+                                                                <select class="custom-select form-control-sm" id="inputGroupSelect">
+                                                                <option value="1" selected>Tarif Std.</option>
+                                                                <option value="2">Option 2</option>
+                                                                <option value="3">Option 3</option>
+                                                                </select>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--END : Tarif -->
+                                                        
+                                                        <!-- ************************************  -->
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--END : First Card -->
+                                            <!--BEGIN : Second Card -->
+                                            <div class="col-4 col-md-6 col-lg-4">
+                                                <div class="card " id="card2" style="margin-left:-20px;margin-right:-20px; height:100%;">
+                                                    <div class="card-body" style="margin-top:0%;">
+                                                  
+                                                    <!--BEGIN : Valeur a rembourser -->
+                                                    <div class="form-row">
+                                                        <div class="badge badge-warning" style="position: absolute; right: 20px;">Verfié</div>      
+                                                        <br>
+                                                        <div class="form-group col-md-6" style="margin-top:8%;">
+                                                            
+                                                        <label style="font-size:14px;">Valeur à rembourser</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" placeholder="125.000" min="1" disabled>
+                                                            <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                DT
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="form-group col-md-6" style="margin-top:8%;">
+                                                        <label>'</label>
+                                                        <div class="input-group">
+                                                            <select class="custom-select form-control-sm" id="inputGroupSelect">
+                                                            <option value="1" selected>100%</option>
+                                                            <option value="2">50%</option>
+                                                            <option value="3">0%</option>
+                                                            </select>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--END : Valeur a rembourser-->
+                                                    <!--BEGIN : Date-->
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                        <label style="font-size:14px;">Période</label>
+                                                        <div class="input-group">
+                                                            <input type="date" class="form-control" >
+                                                        </div>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                        <label>.</label>
+                                                        <div class="input-group">
+                                                            <input type="date" class="form-control" >
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--END : Date -->
+                            
+                                                    <!--BEGIN : Note frais-->
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12">
+                                                        <label style="font-size:14px;">Note frais</label>
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control" placeholder="Note de frais" aria-label="">
+                                                            <div class="input-group-append">
+                                                            <button class="btn btn-light" type="submit"><i class="fa-solid fa-circle-plus" style="color:#7C83FD;"></i></button>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- END : Note frais -->
+
+                                                    <!--BEGIN : Commenataire-->
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12">
+                                                            <label style="font-size:14px;">Commentaire</label>
+                                                            <textarea class="form-control" placeholder="Commentaire"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <!--END : Commenataire-->
+
+                                                    </div>
+                                                </div>
+                                                <!---->
+                                                <div style="max-height: 100%;"></div>
+                                                <!---->
+                                            </div>
+                                            <div class="col-4 col-md-6 col-lg-4">
+                                                <div class="card " id="card3"  style="margin-right:5px;">
+                        
+                                                    <div class="card-body" style="margin-top:0%;">   
+                                                        
+                                                    </div>
+                                                </div>                 
+                                        </div>
+                                        <!--<div id="div2" >
+                                            <Pays
+                                            <label></label>
+                                            <select id="inputPays" class="form-control form-control-sm">
+                                                <option selected hidden > -- Sélectionnez le pays -- </option>
+                                                <option>Option 1</option>
+                                                <option>Option 2</option>
+                                                <option>Option 3</option>
+                                            </select>
+                                            Note frais
+                                            <label></label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Note de frais" aria-label="">
+                                                <div class="input-group-append">
+                                                <button class="btn btn-light" type="submit"><i class="fa-solid fa-circle-plus" style="color:#7C83FD;"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="div3" >ITEM 3</div>
+                                        <!-->
                                     </div>
+                                    <!--////////////////////////////////////////////////////////////-->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                                        <button type="button" class="btn btn-info" (click)="modal.close('Close click')">Sauvegarder</button>
                                     </div>
                                     </ng-template>
                                     

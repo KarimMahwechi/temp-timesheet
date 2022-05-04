@@ -5,6 +5,7 @@ import { ResetPasswordComponent } from './authentication/reset-password/reset-pa
 import { SignInComponent } from './authentication/sign-in/sign-in.component';
 import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { AsideBarComponent } from './elements/aside-bar/aside-bar.component';
+import { SecondModalComponent } from './elements/second-modal/second-modal.component';
 import { ExpenseComponent } from './spending-management/expense/expense.component';
 import { ExpensesComponent } from './spending-management/expenses/expenses.component';
 import { TestTableComponent } from './tests/test-table/test-table.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:'aside',component:AsideBarComponent},
   {path:'',component:TestTableComponent},
   {path:'exp',component:ExpensesComponent},
-  {path:'e',component:ExpenseComponent}
+  {path:'e',component:ExpenseComponent},
+  {path:'ex',component:SecondModalComponent}
 
   
 ];

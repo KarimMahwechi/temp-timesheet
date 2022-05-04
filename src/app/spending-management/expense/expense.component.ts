@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit , ViewChild, ViewEncapsulation } from '@angular/core';
 
-import {NgbModal, ModalDismissReasons, NgbAccordionConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbAccordionConfig, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-expense',
@@ -199,5 +199,7 @@ export class ExpenseComponent implements OnInit {
   openModalDialogCustomClass(content:any) {
     this.modalService.open(content, { modalDialogClass: 'dark-modal' });
   }
+
+
 
 }

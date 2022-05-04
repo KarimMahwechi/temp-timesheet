@@ -17,6 +17,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { ExpenseComponent } from './spending-management/expense/expense.component';
+import { SecondModalComponent } from './elements/second-modal/second-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ExpenseComponent } from './spending-management/expense/expense.componen
     ForgetPasswordComponent,
     ExpensesComponent,
     TestTableComponent,
-    ExpenseComponent
+    ExpenseComponent,
+    SecondModalComponent
   ],
   imports: [
     BrowserModule,
