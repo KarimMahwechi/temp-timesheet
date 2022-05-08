@@ -51,7 +51,8 @@
               "src/assets/bundles/datatables/datatables.min.js",
               "src/assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js",
               "src/assets/bundles/jquery-ui/jquery-ui.min.js",
-              "src/assets/js/page/datatables.js"
+              "src/assets/js/page/datatables.js",
+              "src/assets/bundles/bootstrap-daterangepicker/daterangepicker.js"
    
               
             ]
