@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem, MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-test-table',
@@ -64,7 +66,9 @@ export class TestTableComponent implements OnInit {
   p : number = 1;
   key : string ='id';
   reverse : boolean = false;
-  constructor() { }
+
+
+  constructor() {}
 
   ngOnInit(): void {
     // this.membersList = [
@@ -75,6 +79,7 @@ export class TestTableComponent implements OnInit {
     //   {Id: "5", firstName: "Sallemi", lastName:"Salwen",email:"salwensallemi@gmail.com",mobile:"54269874",salary:"1700"}
     // ]
     this.membersList = this.members;
+    /** */
   }
 
   Search(){
@@ -89,4 +94,6 @@ export class TestTableComponent implements OnInit {
     this.key = key ;
     this.reverse = !this.reverse;
   }
+  
+
 }

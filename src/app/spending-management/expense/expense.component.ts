@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit , ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
-import {NgbModal, ModalDismissReasons, NgbAccordionConfig, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbAccordionConfig, NgbActiveModal, NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-expense',
@@ -49,6 +50,8 @@ import {NgbModal, ModalDismissReasons, NgbAccordionConfig, NgbActiveModal} from 
       width:80%;
       display:inline-block;
     }
+    .card-body{
+    }
     *{
     /* font-family: 'Sofia Pro', sans-serif;  */
     font-family: 'Manrope';
@@ -62,10 +65,30 @@ import {NgbModal, ModalDismissReasons, NgbAccordionConfig, NgbActiveModal} from 
       margin-bottom:0px;
       font-size:14px;
     }
+    /** */
+    .ngx-pagination {
+    padding-left: 0px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    /**  .btn-info  */
+    .ngx-pagination .current {
+      background: #17a2b8 !important;
+      border: transparent !important;
+      border-radius: 20px !important;
+    }
+
+    .ngx-pagination .current:hover {
+      background: #17a2b8 !important;
+      border-radius: 20px !important; 
+      border: transparent !important;
+    }
 
   `]
 })
 export class ExpenseComponent implements OnInit {
+
 
   expensesList: Array<{id: string ,titre:string , date: string, description: string, categorie:string,ville:string,noteFrais:string,montant:string,aRembourser:boolean,tva:string,etat:string}> = [
     {id : "1", titre : "1 titre", date: "20/03/2022", description: "Desc 1 ", categorie:"Avion",ville:"Djerba",noteFrais:"Note 1",montant:"1500",aRembourser:true,tva:"12500",etat:"Verfiée"},
@@ -96,14 +119,24 @@ export class ExpenseComponent implements OnInit {
   /** */
   closeResult :any ="" ;
   isDisabled = false;
-  urlFile : any ="src/assets/img/noFile.png";
+  urlFile : any ="assets/img/noFile.png";
   /** */
   public fieldArray: Array<any> = [];
   private newAttribute: any = {};
   /** */
   public isCollapsed = true;
 
-  constructor(private modalService: NgbModal,private configAccor:NgbAccordionConfig) { }
+  /** */
+  myForm1:any;
+  myFormDepense:any;
+
+  /** */
+  public categories : Array<String> = ['Avion ','Carburant','Divers','Divertissement ' ,'Eau' ,'Frais postaux ', 'Gaz ', 'Hébergement' ,'Internet ' , 'Loyer', 'Matériel' , 'Parking' , 'Péage ' , 'Resturation' , 'Services' , 'Taxi' , 'Transport' ,' Téléphone ', 'Voiture '];
+
+  constructor(private modalService: NgbModal,private configAccor:NgbAccordionConfig,private formbuilder:FormBuilder ) {
+
+
+   }
 
   ngOnInit(): void {
     this.expensesList = [
@@ -127,7 +160,26 @@ export class ExpenseComponent implements OnInit {
       {id : "3", titre : "18 titre", date: "17/02/2022", description: "Desc 3 ", categorie:"Internet",ville:"Bizerte",noteFrais:"Note 3",montant:"6300",aRembourser:true,tva:"9000",etat:"Rejetée"},
       {id : "4", titre : "19 titre", date: "10/04/2022", description: "Desc 4 ", categorie:"Restauration",ville:"Sfax",noteFrais:"Note 4",montant:"9900",aRembourser:false,tva:"26500",etat:"En attente"},
       {id : "5", titre : "20 titre", date: "29/12/2022", description: "Desc 5 ", categorie:"Peage",ville:"Touzeur",noteFrais:"Note 5",montant:"3400",aRembourser:false,tva:"39100",etat:"Verfiée"}
-    ]
+    ];
+    this.myForm1 = this.formbuilder.group({
+      titreNoteFrais:['', Validators.required],
+      descNoteFrais:['', Validators.required]
+    });
+    this.myFormDepense = this.formbuilder.group({
+      facturableDepense:[false],
+      titreDepense:['', Validators.required],
+      dateDepense:['', Validators.required],
+      cateDepense:['', Validators.required],
+      etatDepense:['', Validators.required],
+      paysDepense:[''],
+      rembourserDepense:[false],
+      noteFraisDepense:['', Validators.required],
+      descDepense:[''],
+      montantDepense:[''],
+      mntDepense:[''],
+      taxDepense:[''],
+      fichierDepense:['']
+    });
   }
 
   Search(){
@@ -205,6 +257,15 @@ export class ExpenseComponent implements OnInit {
     this.modalService.open(content, { modalDialogClass: 'dark-modal' });
   }
 
+  print(){
+    console.log(this.myForm1.value);
+    this.myForm1.reset();
+  }
+  printDepense(){
+    console.log(this.myFormDepense.value);
+    this.myFormDepense.reset();
+  }
 
+  /** */
 
 }

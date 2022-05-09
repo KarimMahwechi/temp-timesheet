@@ -11,7 +11,7 @@ import { ResetPasswordComponent } from './authentication/reset-password/reset-pa
 import { ForgetPasswordComponent } from './authentication/forget-password/forget-password.component';
 import { ExpensesComponent } from './spending-management/expenses/expenses.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TestTableComponent } from './tests/test-table/test-table.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -30,6 +30,7 @@ import {ButtonModule} from 'primeng/button';
 
 
                 //api
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 @NgModule({
   declarations: [
@@ -50,13 +51,15 @@ import {ButtonModule} from 'primeng/button';
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
     Ng2OrderModule,
     TooltipModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    SplitButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
