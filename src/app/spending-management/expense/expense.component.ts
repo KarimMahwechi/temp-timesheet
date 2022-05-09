@@ -50,6 +50,8 @@ import {NgbModal, ModalDismissReasons, NgbAccordionConfig, NgbActiveModal, NgbDa
       width:80%;
       display:inline-block;
     }
+    .card-body{
+    }
     *{
     /* font-family: 'Sofia Pro', sans-serif;  */
     font-family: 'Manrope';
@@ -62,6 +64,25 @@ import {NgbModal, ModalDismissReasons, NgbAccordionConfig, NgbActiveModal, NgbDa
       margin-top:5px;
       margin-bottom:0px;
       font-size:14px;
+    }
+    /** */
+    .ngx-pagination {
+    padding-left: 0px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    /**  .btn-info  */
+    .ngx-pagination .current {
+      background: #17a2b8 !important;
+      border: transparent !important;
+      border-radius: 20px !important;
+    }
+
+    .ngx-pagination .current:hover {
+      background: #17a2b8 !important;
+      border-radius: 20px !important; 
+      border: transparent !important;
     }
 
   `]
@@ -98,7 +119,7 @@ export class ExpenseComponent implements OnInit {
   /** */
   closeResult :any ="" ;
   isDisabled = false;
-  urlFile : any ="src/assets/img/noFile.png";
+  urlFile : any ="assets/img/noFile.png";
   /** */
   public fieldArray: Array<any> = [];
   private newAttribute: any = {};

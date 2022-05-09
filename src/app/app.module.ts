@@ -18,6 +18,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { ExpenseComponent } from './spending-management/expense/expense.component';
 import { SecondModalComponent } from './elements/second-modal/second-modal.component';
+import { ButtonModule } from 'primeng/button';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { SecondModalComponent } from './elements/second-modal/second-modal.compo
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    Ng2OrderModule
+    Ng2OrderModule,
+    ButtonModule,
+    SplitButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

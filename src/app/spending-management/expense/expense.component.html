@@ -83,10 +83,10 @@
                                     </table>
 
                                     <!---->
-                                    <ngb-accordion #acc="ngbAccordion" style="width:100%">
+                                    <ngb-accordion #acc="ngbAccordion">
                                         <ngb-panel id="toggle-2" title="Filtres Standards" hidden="">
                                             <ng-template ngbPanelContent>
-                                                <div class="form-group">
+                                                <div class="form-group" style="margin-bottom:0%;">
                                                     <div class="form-row">
                                                         <div class="form-inline">
                                                             <div class="form-group">
@@ -129,8 +129,6 @@
                                                             <p>Lorem ipsum...</p>
                                                         </div>-->
 
-                                                        <!---->
-
                                                         <!--
                                                         <div class="form-inline">
                                                             <div class="form-group">
@@ -140,6 +138,8 @@
                                                             </div>
                                                         </div>
                                                         -->
+
+                                                        <!--
                                                         <div class="form-inline">
                                                             <div class="form-group col-md-3">
                                                                 <label style="font-size:14px;">Du</label>
@@ -171,15 +171,15 @@
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                        -->
                                                     </div>
-
                                                     <br>
                                                     <div class="form-row">
                                                         <div class="form-inline">
                                                             <div class="form-group ">
                                                                 <label>État de facturation</label>
                                                                 <select
-                                                                    class="form-select form-select-sm form-control mx-sm-5 col-lg-9 ">
+                                                                    class="form-select form-select-sm form-control mx-sm-3 col-lg-9 ">
                                                                     <option selected>Facturable / Non facturable
                                                                     </option>
                                                                     <option value="1">Non Facturable</option>
@@ -191,7 +191,7 @@
                                                             <div class="form-group ">
                                                                 <label>État de remboursement</label>
                                                                 <select
-                                                                    class="form-select form-select-sm form-control mx-sm-5 col-lg-9">
+                                                                    class="form-select form-select-sm form-control mx-sm-3 col-lg-9">
                                                                     <option selected>Remboursable / Non Remboursable
                                                                     </option>
                                                                     <option value="1">Remboursable</option>
@@ -203,7 +203,7 @@
 
                                                     </div>
 
-
+                                                    <!--
                                                     <div class="form-row">
 
                                                         <div class="form-group col-md-6">
@@ -226,57 +226,56 @@
                                                             </select>
                                                         </div>
                                                     </div>
-
+                                                    -->
                                                 </div>
 
-                                                <!---->
 
-                                            <form>
-                                                
-                                                <div class="pretty p-switch p-fill">
-                                                  <input type="checkbox" />
-                                                  <div class="state p-info">
-                                                    <label>Facturable au client</label>
-                                                  </div>
-                                                </div>
-                                                
-                                                <div class="pretty p-switch p-fill">
-                                                  <input type="checkbox" />
-                                                  <div class="state p-info">
-                                                    <label>A rembourser</label>
-                                                  </div>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <select id="inputCategorie" class="form-control form-control-sm">
-                                                        <option selected hidden> -- Sélectionnez la catégorie de dépense -- </option>
-                                                        <option>Option 1</option>
-                                                        <option>Option 2</option>
-                                                        <option>Option 3</option>
-                                                    </select>
-                                                    <select id="inputCategorie" class="form-control form-control-sm">
-                                                        <option selected hidden> -- Sélectionnez la catégorie de dépense -- </option>
-                                                        <option>Option 1</option>
-                                                        <option>Option 2</option>
-                                                        <option>Option 3</option>
-                                                    </select>
-                                                </div>
+                                                <!--
+                                                <form>
+                                                    <div class="pretty p-switch p-fill">
+                                                    <input type="checkbox" />
+                                                    <div class="state p-info">
+                                                        <label>Facturable au client</label>
+                                                    </div>
+                                                    </div>
+                                                    
+                                                    <div class="pretty p-switch p-fill">
+                                                    <input type="checkbox" />
+                                                    <div class="state p-info">
+                                                        <label>A rembourser</label>
+                                                    </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <select id="inputCategorie" class="form-control form-control-sm">
+                                                            <option selected hidden> -- Sélectionnez la catégorie de dépense -- </option>
+                                                            <option>Option 1</option>
+                                                            <option>Option 2</option>
+                                                            <option>Option 3</option>
+                                                        </select>
+                                                        <select id="inputCategorie" class="form-control form-control-sm">
+                                                            <option selected hidden> -- Sélectionnez la catégorie de dépense -- </option>
+                                                            <option>Option 1</option>
+                                                            <option>Option 2</option>
+                                                            <option>Option 3</option>
+                                                        </select>
+                                                    </div>
                                                     <form class="form-inline col-md-6">
-                                                    <div class="form-floating mb-2">
-                                                      <input type="text" class="form-control mb-2 mr-sm-2"  id="floatingInput"
-                                                        placeholder="Jane Doe">
-                                                      <label class="sr-only" for="floatingInput" >Username</label>
-                                                    </div>                        
-                                                    <div class="input-group mb-2 mr-sm-2">
-                                                        <input type="text" class="form-control" id="inlineFormInputGroupUsername2"
-                                                          placeholder="Username">
-                                                    </div>
-                                                    <div class="form-floating mb-2">
-                                                        <input type="date" class="form-control" id="floatingInput" placeholder="name@example.com" value="mdo@example.com">
-                                                        <label for="floatingInput" >Email address</label>
-                                                    </div>
+                                                        <div class="form-floating mb-2">
+                                                        <input type="text" class="form-control mb-2 mr-sm-2"  id="floatingInput"
+                                                            placeholder="Jane Doe">
+                                                        <label class="sr-only" for="floatingInput" >Username</label>
+                                                        </div>                        
+                                                        <div class="input-group mb-2 mr-sm-2">
+                                                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2"
+                                                            placeholder="Username">
+                                                        </div>
+                                                        <div class="form-floating mb-2">
+                                                            <input type="date" class="form-control" id="floatingInput" placeholder="name@example.com" value="mdo@example.com">
+                                                            <label for="floatingInput" >Email address</label>
+                                                        </div>
                                                     </form>                          
-                                            </form>
-                                        
+                                                </form>
+                                                -->
                                             </ng-template>
                                         </ngb-panel>
                                     </ngb-accordion>
@@ -284,9 +283,9 @@
 
                                     <font size="2">
 
-                                        <table width="100%" class="table table-bordered table-md" id="albums"
+                                        <table width="100%" class="table  table-light table-hover table-md" id="albums"
                                             cellspacing="0" border="1px">
-                                            <thead>
+                                            <thead >
                                                 <tr class="spaceUnder" border="1px">
                                                     <th (click)="sortField('date')">Date &nbsp; <i
                                                             class="fa-solid fa-sort"></i></th>
@@ -300,7 +299,7 @@
                                                             class="fa-solid fa-sort"></i></th>
                                                     <th (click)="sortField('noteFrais')">Note de frais &nbsp; <i
                                                             class="fa-solid fa-sort"></i></th>
-                                                    <th (click)="sortField('montant')"> Montant TTC &nbsp; <i
+                                                    <th (click)="sortField('montant')"> TTC &nbsp; <i
                                                             class="fa-solid fa-sort"></i></th>
                                                     <th>R</th>
                                                     <th (click)="sortField('tva')">TVA &nbsp; <i
@@ -314,7 +313,7 @@
                                             <tbody>
                                                 <tr class="spaceUnder"
                                                     *ngFor="let expenses of expensesList |orderBy: key: reverse | paginate: {itemsPerPage: 10 , currentPage : p} ;">
-                                                    <td style="width:8%;"> {{ expenses.date }}</td>
+                                                    <td style="width:3%;"> {{ expenses.date }}</td>
                                                     <td style="width:10%;"> {{ expenses.titre }}</td>
                                                     <td style="width:12%;"> {{ expenses.description }} </td>
                                                     <td style="width:12%;">
@@ -323,23 +322,23 @@
                                                     <td style="width:7%;">
                                                         {{ expenses.ville }}
                                                     </td>
-                                                    <td style="width:12%;">{{ expenses.noteFrais }}</td>
+                                                    <td style="width:15%;">{{ expenses.noteFrais }}</td>
 
-                                                    <td style="width:10%;">{{ expenses.montant }}</td>
-                                                    <td style="width:5%;">{{ expenses.aRembourser }}</td>
+                                                    <td style="width:7%;">{{ expenses.montant }}</td>
+                                                    <td style="width:2%;">{{ expenses.aRembourser }}</td>
                                                     <td style="width:7%;">{{ expenses.tva }}</td>
                                                     <td style="width:2%;"><i class="fa-solid fa-eye"></i></td>
-                                                    <td style="width:7%;">
+                                                    <td style="width:7%; text-align:center;">
                                                         <div class="badge badge-success badge-shadow">{{ expenses.etat
                                                             }}</div>
                                                     </td>
                                                     <td style="width:10%"><a href="#" id="btn1"
                                                             class="btn btn-sm btn-primary "
-                                                            style="padding-left:20%;padding-right:20%; margin : auto ; display:inline-block;">Detail</a>
+                                                            style="padding-left:20%;padding-right:20%; margin : auto ; display:inline-block;justify-content: center;">Detail</a>
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                            <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>
                                         </table>
                                     </font>
                                 </div>
@@ -417,7 +416,7 @@
                                     <!--***********************************************************************************-->
                                 </ng-template>
                                 <!-- END : MODEL TEMPLATE ( NOTE FRAIS  )-->
-                                <div class="card-body">
+                                <div class="card-body shadow-none p-4 mb-4 bg-light">
                                     <!-- BEGIN : MODEL TEMPLATE ( Expenses )-->
                                     <ng-template #content let-modal>
                                         <div class="modal-header">
@@ -476,10 +475,11 @@
 
                                                 <!--First Card -->
                                                 <div class="col-4 col-md-6 col-lg-4">
-                                                    <div class="card " id="card1" style="margin-left:5px;height:100%;">
+                                                    <div class="card shadow-none border-0 " id="card1"
+                                                        style="margin-left:5px;height:100%;">
 
                                                         <div class="card-body" style="margin-top:0%;">
-                                                            <div class="form-group">
+                                                            <div class="form-group" style="margin-bottom:0%;">
                                                                 <!---->
                                                                 <div class="pretty p-switch p-fill"
                                                                     style="position: absolute; right: 20px; font-size:80%">
@@ -497,94 +497,101 @@
                                                                 <!--<label style="font-size: 15px;">Généralités</label>    -->
                                                                 <br>
                                                                 <!--Titre-->
-
-                                                                <label> Titre </label>
-                                                                <input type="text" class="form-control form-control-sm"
-                                                                    id="inputTitre" placeholder="Titre" width="5%"
-                                                                    formControlName="titreDepense" [ngClass]="
-                                                                (myFormDepense.get('titreDepense').touched ||
-                                                                myFormDepense.get('titreDepense').dirty) &&
-                                                                myFormDepense.get('titreDepense').hasError('required')
-                                                                  ? 'is-invalid'
-                                                                  : '' ||
-                                                                    ((myFormDepense.get('titreDepense').touched ||
-                                                                    myFormDepense.get('titreDepense').dirty) &&
-                                                                    !myFormDepense.get('titreDepense').invalid)
-                                                                  ? 'is-valid'
-                                                                  : ''
-                                                                ">
-                                                                <div class="invalid-feedback">Titre du depense est
-                                                                    obligatoire</div>
+                                                                <div class="form-group" style="margin-bottom: -1%;"> 
+                                                                    <label> Titre </label>
+                                                                    <input type="text"
+                                                                        class="form-control form-control-sm"
+                                                                        id="inputTitre" placeholder="Titre" width="5%"
+                                                                        formControlName="titreDepense" [ngClass]="
+                                                                        (myFormDepense.get('titreDepense').touched ||
+                                                                        myFormDepense.get('titreDepense').dirty) &&
+                                                                        myFormDepense.get('titreDepense').hasError('required')
+                                                                        ? 'is-invalid'
+                                                                        : '' ||
+                                                                            ((myFormDepense.get('titreDepense').touched ||
+                                                                            myFormDepense.get('titreDepense').dirty) &&
+                                                                            !myFormDepense.get('titreDepense').invalid)
+                                                                        ? 'is-valid'
+                                                                        : ''
+                                                                        ">
+                                                                    <div class="invalid-feedback">Titre du depense est
+                                                                        obligatoire</div>
+                                                                </div>
                                                                 <!--Date-->
-
-                                                                <label style="margin-top:20px;">Date</label>
-                                                                <input type="date" class="form-control form-control-sm"
-                                                                    placeholder="Date" formControlName="dateDepense"
-                                                                    [ngClass]="
-                                                                (myFormDepense.get('dateDepense').touched ||
-                                                                myFormDepense.get('dateDepense').dirty) &&
-                                                                myFormDepense.get('dateDepense').hasError('required')
-                                                                  ? 'is-invalid'
-                                                                  : '' ||
-                                                                    ((myFormDepense.get('dateDepense').touched ||
-                                                                    myFormDepense.get('dateDepense').dirty) &&
-                                                                    !myFormDepense.get('dateDepense').invalid)
-                                                                  ? 'is-valid'
-                                                                  : ''
-                                                                ">
-                                                                <div class="invalid-feedback">Date du depense est
-                                                                    obligatoire</div>
-
+                                                                <div class="form-group" style="margin-bottom: -1%;">
+                                                                    <label style="margin-top:20px;">Date</label>
+                                                                    <input type="date" class="form-control form-control-sm"
+                                                                        placeholder="Date" formControlName="dateDepense"
+                                                                        [ngClass]="
+                                                                        (myFormDepense.get('dateDepense').touched ||
+                                                                        myFormDepense.get('dateDepense').dirty) &&
+                                                                        myFormDepense.get('dateDepense').hasError('required')
+                                                                        ? 'is-invalid'
+                                                                        : '' ||
+                                                                            ((myFormDepense.get('dateDepense').touched ||
+                                                                            myFormDepense.get('dateDepense').dirty) &&
+                                                                            !myFormDepense.get('dateDepense').invalid)
+                                                                        ? 'is-valid'
+                                                                        : ''
+                                                                        ">
+                                                                    <div class="invalid-feedback">Date du depense est
+                                                                        obligatoire</div>
+                                                                </div>
                                                                 <!--Categorie-->
                                                                 <!-- <label style="font-size:14px;" >État de note</label> -->
-                                                                <label style="margin-top:20px;"> Sélectionnez la
-                                                                    catégorie
-                                                                    de dépense</label>
-                                                                <select class="custom-select form-control-sm"
-                                                                    formControlName="cateDepense" [ngClass]="
-                                                                (myFormDepense.get('cateDepense').touched ||
-                                                                myFormDepense.get('cateDepense').dirty) &&
-                                                                myFormDepense.get('cateDepense').hasError('required')
-                                                                  ? 'is-invalid'
-                                                                  : '' ||
-                                                                    ((myFormDepense.get('cateDepense').touched ||
-                                                                    myFormDepense.get('cateDepense').dirty) &&
-                                                                    !myFormDepense.get('cateDepense').invalid)
-                                                                  ? 'is-valid'
-                                                                  : ''
-                                                                ">
+                                                                <div class="form-group" style="margin-bottom: -1%;">
+                                                                    <label style="margin-top:20px;"> Sélectionnez la
+                                                                        catégorie
+                                                                        de dépense</label>
+                                                                    <select class="custom-select form-control-sm"
+                                                                        formControlName="cateDepense" 
+                                                                        [ngClass]="
+                                                                        (myFormDepense.get('cateDepense').touched ||
+                                                                        myFormDepense.get('cateDepense').dirty) &&
+                                                                        myFormDepense.get('cateDepense').hasError('required')
+                                                                        ? 'is-invalid'
+                                                                        : '' ||
+                                                                            ((myFormDepense.get('cateDepense').touched ||
+                                                                            myFormDepense.get('cateDepense').dirty) &&
+                                                                            !myFormDepense.get('cateDepense').invalid)
+                                                                        ? 'is-valid'
+                                                                        : ''
+                                                                        ">
 
-                                                                    <option value="1">One</option>
-                                                                    <option value="2">Two</option>
-                                                                    <option value="3">Three</option>
-                                                                </select>
-                                                                <div class="invalid-feedback">Catégorie de depense est
-                                                                    obligatoire</div>
+                                                                        <option value="1">One</option>
+                                                                        <option value="2">Two</option>
+                                                                        <option value="3">Three</option>
+                                                                    </select>
+                                                                    <div class="invalid-feedback">Catégorie de depense est
+                                                                        obligatoire</div>
+                                                                </div>
                                                                 <br>
                                                                 <!--Moyen de paiement-->
-                                                                <label style="margin-top:20px;"> Sélectionnez l'état du
-                                                                    note
-                                                                </label>
-                                                                <select class="custom-select form-control-sm"
-                                                                    formControlName="etatDepense" [ngClass]="
-                                                                (myFormDepense.get('etatDepense').touched ||
-                                                                myFormDepense.get('etatDepense').dirty) &&
-                                                                myFormDepense.get('etatDepense').hasError('required')
-                                                                  ? 'is-invalid'
-                                                                  : '' ||
-                                                                    ((myFormDepense.get('etatDepense').touched ||
+                                                                <div class="form-group"  style="margin-bottom: -1%;">
+                                                                    <label style="margin-top:20px;">  Sélectionnez l'état du note
+                                                                    </label>
+                                                                    <select class="custom-select form-control-sm" formControlName="etatDepense" 
+                                                                    [ngClass]="
+                                                                    (myFormDepense.get('etatDepense').touched ||
                                                                     myFormDepense.get('etatDepense').dirty) &&
-                                                                    !myFormDepense.get('etatDepense').invalid)
-                                                                  ? 'is-valid'
-                                                                  : ''
-                                                                ">
-                                                                    <option selected value="0">Zero</option>
-                                                                    <option value="1">One</option>
-                                                                    <option value="2">Two</option>
-                                                                    <option value="3">Three</option>
-                                                                </select>
-                                                                <div class="invalid-feedback">État de depense est
-                                                                    obligatoire</div>
+                                                                    myFormDepense.get('etatDepense').hasError('required')
+                                                                    ? 'is-invalid'
+                                                                    : '' ||
+                                                                        ((myFormDepense.get('etatDepense').touched ||
+                                                                        myFormDepense.get('etatDepense').dirty) &&
+                                                                        !myFormDepense.get('etatDepense').invalid)
+                                                                    ? 'is-valid'
+                                                                    : ''
+                                                                    ">
+                                                                        <option selected value="0">Zero</option>
+                                                                        <option value="1">One</option>
+                                                                        <option value="2">Two</option>
+                                                                        <option value="3">Three</option>
+                                                                    </select>
+                                                                    <div class="invalid-feedback">État de depense est
+                                                                        obligatoire
+                                                                    </div>
+                                                                </div>
                                                                 <!---->
                                                                 <label style="margin-top:20px;"> Sélectionnez votre
                                                                     pays</label>
@@ -604,7 +611,7 @@
                                                 <!--END : First Card -->
                                                 <!--BEGIN : Second Card -->
                                                 <div class="col-4 col-md-6 col-lg-4">
-                                                    <div class="card " id="card1"
+                                                    <div class="card shadow-none border-0" id="card1"
                                                         style="margin-left:-20px;margin-right:-20px;height:100%;">
                                                         <div class="card-body" style="margin-top:0%;">
                                                             <div class="form-group">
@@ -643,7 +650,7 @@
                                                                     <option value="2">Two</option>
                                                                     <option value="3">Three</option>
                                                                 </select>
-                                                                <div class="invalid-feedback">Catégorie de depense est
+                                                                <div class="invalid-feedback"> Note frais est
                                                                     obligatoire</div>
                                                                 <!--Note-->
                                                                 <label style="margin-top:20px;"> Description </label>
@@ -665,7 +672,7 @@
                                                                                     type="text" readonly=""
                                                                                     value="250.000"
                                                                                     style="text-align:center;"
-                                                                                    formControlName="montantDepense" />
+                                                                                     />
                                                                             </th>
                                                                             <th colspan="2">
                                                                                 <input
@@ -759,8 +766,9 @@
 
                                                 </div>
                                                 <div class="col-4 col-md-6 col-lg-4">
-                                                    <div class="card " id="card1" style="margin-right:5px;height:100%">
-
+                                                    <div class="card shadow-none border-0" id="card1"
+                                                        style="margin-right:5px;height:100%">
+                                                        <!--p-4 mb-4-->
                                                         <div class="card-body" style="margin-top:0%;">
                                                             <div class="form-group">
                                                                 <!-- BEGIN : MONTANT -->
@@ -805,7 +813,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <img [src]="urlFile" alt="" srcset="" height="300"
-                                                                        width="300">
+                                                                        width="300" value="src/assets/img/noFile.png">
                                                                 </div>
                                                                 <!--END : Upload file-->
                                                             </div>
@@ -855,7 +863,7 @@
                                             </div>
                                         </form>
                                     </ng-template>
-
+                                    <!-- BEGIN : MODAL EXPENSES FIRST ONE MODEL -->
                                     <ng-template #longContent let-modal>
                                         <div class="modal-header">
                                             <div class="form-group col-md-9" style="margin-bottom:0%;">
@@ -1092,7 +1100,8 @@
                                         <div class="row">
                                             <!--First Card -->
                                             <div class="col-4 col-md-6 col-lg-4">
-                                                <div class="card " id="card1" style="margin-left:3px;">
+                                                <div class="card shadow-none border-0" id="card1"
+                                                    style="margin-left:3px;">
 
                                                     <div class="card-body" style="margin-top:0%;">
                                                         <div class="form-row">
@@ -1217,7 +1226,7 @@
                                             <!--END : First Card -->
                                             <!--BEGIN : Second Card -->
                                             <div class="col-4 col-md-6 col-lg-4">
-                                                <div class="card " id="card2"
+                                                <div class="card shadow-none border-0" id="card2"
                                                     style="margin-left:-20px;margin-right:-20px; height:100%;">
                                                     <div class="card-body" style="margin-top:0%;">
 
@@ -1273,16 +1282,14 @@
                                                         <!--BEGIN : Note frais-->
                                                         <div class="form-row">
                                                             <div class="form-group col-md-12">
-                                                                <label style="font-size:14px;">Note frais</label>
-                                                                <div class="input-group mb-3">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Note de frais" aria-label="">
-                                                                    <div class="input-group-append">
-                                                                        <button class="btn btn-light" type="submit"><i
-                                                                                class="fa-solid fa-circle-plus"
-                                                                                style="color:#7C83FD;"></i></button>
-                                                                    </div>
-                                                                </div>
+                                                                <label> Sélectionnez le note frais </label>
+                                                                <select class="custom-select form-control-sm">
+                                                                    <option value="1">One</option>
+                                                                    <option value="2">Two</option>
+                                                                    <option value="3">Three</option>
+                                                                </select>
+                                                                <div class="invalid-feedback"> Note frais est
+                                                                    obligatoire</div>
                                                             </div>
                                                         </div>
                                                         <!-- END : Note frais -->
@@ -1304,7 +1311,8 @@
                                                 <!---->
                                             </div>
                                             <div class="col-4 col-md-6 col-lg-4">
-                                                <div class="card " id="card3" style="margin-right:5px;">
+                                                <div class="card shadow-none border-0" id="card3"
+                                                    style="margin-right:5px;">
 
                                                     <div class="card-body" style="margin-top:0%;">
 
@@ -1340,7 +1348,7 @@
                                                 (click)="modal.close('Close click')">Sauvegarder</button>
                                         </div>
                                     </ng-template>
-
+                                    <!-- BEGIN : MODEL KILO FIRST ONE -->
                                     <ng-template #longContent1 let-modal>
                                         <div class="modal-header">
                                             <h4 class="modal-title">Ajouter frais kilométriques1</h4>
