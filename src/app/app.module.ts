@@ -18,6 +18,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { ExpenseComponent } from './spending-management/expense/expense.component';
 import { SecondModalComponent } from './elements/second-modal/second-modal.component';
+import { TimeSheetComponent } from './time-sheet/time-sheet.component';
+import {TooltipModule} from 'primeng/tooltip';
+import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
+
+
+
+
+
+
+
+                //api
 
 @NgModule({
   declarations: [
@@ -30,7 +42,8 @@ import { SecondModalComponent } from './elements/second-modal/second-modal.compo
     ExpensesComponent,
     TestTableComponent,
     ExpenseComponent,
-    SecondModalComponent
+    SecondModalComponent,
+    TimeSheetComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +53,10 @@ import { SecondModalComponent } from './elements/second-modal/second-modal.compo
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    Ng2OrderModule
+    Ng2OrderModule,
+    TooltipModule,
+    InputTextModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

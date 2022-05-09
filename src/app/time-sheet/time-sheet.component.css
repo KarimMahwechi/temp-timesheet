@@ -1,0 +1,78 @@
+.card-body{
+    color: #2a73e8;
+    font-weight: bold;
+    font-family: 'Sofia Pro', sans-serif;
+    font-size: 16px;
+}
+.line{
+  content: "";
+  background-color: #2a73e8;
+  font-weight: bolder;
+
+  height: .3em;
+  width: 5.2em;
+  border-radius: 8px;
+}
+
+.line2{
+  content: "";
+  background-color: #2a73e8;
+  font-weight: bolder;
+  height: 2.3em;
+  width: .8em;
+  margin-top:20px;
+  margin-left:10px;
+  border-radius: 8px;
+}
+
+#visualTS{
+  color: black
+}
+
+#profileColl{
+  font-size: 13px;
+  color: black;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.rounded-circle{
+  width: 35px;
+  margin-left: 10px;
+  margin-bottom: 12px;
+}
+
+.card-content{
+  background-color: #ededed;
+  border-radius: 35px;
+}
+
+#nameCollab {
+  color: #0D0A0A;
+  font-size: 24px;
+}
+
+#roleCollab {
+  color: #0D0A0A;
+  font-size: small;
+  margin-left: 15px;
+  margin-top: -5px;
+}
+
+#parDefaut{
+  font-weight: 700;
+  font-size: 11px;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.dropCollab{
+  margin-left: 15em;
+}
+
+.selectCollab{
+  border-radius: 8px;
+  width: 15em;
+}
+

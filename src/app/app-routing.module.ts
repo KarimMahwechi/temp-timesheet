@@ -9,6 +9,7 @@ import { SecondModalComponent } from './elements/second-modal/second-modal.compo
 import { ExpenseComponent } from './spending-management/expense/expense.component';
 import { ExpensesComponent } from './spending-management/expenses/expenses.component';
 import { TestTableComponent } from './tests/test-table/test-table.component';
+import { TimeSheetComponent } from './time-sheet/time-sheet.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:'',component:TestTableComponent},
   {path:'exp',component:ExpensesComponent},
   {path:'e',component:ExpenseComponent},
-  {path:'ex',component:SecondModalComponent}
+  {path:'ex',component:SecondModalComponent},
+  {path:'time',component:TimeSheetComponent}
 
   
 ];
