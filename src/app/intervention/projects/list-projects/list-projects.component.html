@@ -36,27 +36,27 @@
                                                             projectForm.get('nameProject')?.hasError('required')
                                                               ? 'is-invalid'
                                                               : '' ||
-                                                            ((projectForm.get('nameProject')?.touched ||
-                                                            projectForm.get('nameProject')?.dirty) &&
-                                                            !projectForm.get('nameProject')?.invalid)
-                                                              ? 'is-valid'
-                                                              : ''
+                                                              ((projectForm.get('nameProject')?.touched ||
+                                                              projectForm.get('nameProject')?.dirty) &&
+                                                              !projectForm.get('nameProject')?.invalid)
+                                                                ? 'is-valid'
+                                                                : ''
                                                             ">
                                                 <div class="invalid-feedback">Nom du projet est obligatoire </div>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <!--Priorité-->
                                                 <label>Priorité</label>
-                                                <select id="inputCategorie" class="custom-select form-control-sm" formControlName="stateOfProject"
+                                                <select id="inputCategorie" class="custom-select form-control-sm" formControlName="priorityOfProject"
                                                 [ngClass]="
-                                                            (projectForm.get('stateOfProject')?.touched ||
-                                                            projectForm.get('stateOfProject')?.dirty) &&
-                                                            projectForm.get('stateOfProject')?.hasError('required')
+                                                            (projectForm.get('priorityOfProject')?.touched ||
+                                                            projectForm.get('priorityOfProject')?.dirty) &&
+                                                            projectForm.get('priorityOfProject')?.hasError('required')
                                                               ? 'is-invalid'
                                                               : '' ||
-                                                            ((projectForm.get('stateOfProject')?.touched ||
-                                                            projectForm.get('stateOfProject')?.dirty) &&
-                                                            !projectForm.get('stateOfProject')?.invalid)
+                                                            ((projectForm.get('priorityOfProject')?.touched ||
+                                                            projectForm.get('priorityOfProject')?.dirty) &&
+                                                            !projectForm.get('priorityOfProject')?.invalid)
                                                               ? 'is-valid'
                                                               : ''
                                                             ">
@@ -89,7 +89,7 @@
                                             <div class="form-group col-md-6">
                                                 <!--Date limite-->
                                                 <label>Date limilte</label>
-                                                <input type="date" class="form-control" formControlName="deadlineProject"
+                                                <input type="date" min="{{projectForm.get('createdAtProject')?.value | date:'yyyy-MM-dd'}}" class="form-control" formControlName="deadlineProject"
                                                 [ngClass]="
                                                 (projectForm.get('deadlineProject')?.touched ||
                                                 projectForm.get('deadlineProject')?.dirty) &&

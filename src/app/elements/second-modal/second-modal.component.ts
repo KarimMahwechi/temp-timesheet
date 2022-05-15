@@ -47,17 +47,7 @@ export class NgbdModal2Content {
   templateUrl: './second-modal.component.html',
   styleUrls: ['./second-modal.component.css']
 })
-export class SecondModalComponent implements OnInit {
+export class SecondModalComponent  {
 
-  modalsNumber = 0;
-
-  constructor(private modalService: NgbModal) {
-    this.modalService.activeInstances.subscribe((list) => { this.modalsNumber = list.length; });
-  }
-
-  open() { this.modalService.open(NgbdModal1Content); }
-
-  ngOnInit(): void {
-  }
 
 }

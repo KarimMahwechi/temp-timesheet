@@ -10,6 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class ListProjectsComponent implements OnInit  {
 
+minDate : Date = new Date();
   // membersList: Array<{Id: string, firstName: string, lastName:string,email:string,mobile:string,salary:string}> = [
   //   {Id: "1", firstName: "Mahwechi", lastName:"Karim",email:"mahwechikarim@gmail.com",mobile:"22287444",salary:"1000"},
   //   {Id: "2", firstName: "Ben Romdhane", lastName:"Mohamed",email:"benromdhanemohamed@gmail.com",mobile:"58209788",salary:"1200"},
@@ -47,7 +48,7 @@ export class ListProjectsComponent implements OnInit  {
       descProject:['',Validators.required],
       createdAtProject:['',Validators.required],
       deadlineProject:['',Validators.required],
-      stateOfProject:['',Validators.required]
+      priorityOfProject:['',Validators.required]
     })
   }
 
