@@ -144,29 +144,29 @@
                                                         class="fa-solid fa-sort"></i></th>
                                                 <th (click)="sortField('stateOfProject')">Statu &nbsp; <i
                                                         class="fa-solid fa-sort"></i></th>
-                                                <th (click)="sortField('priorityOfProject')"> Priorité &nbsp; <i
+                                                <th (click)="sortField('priorityOfProject')" style="text-align:center;"> Priorité &nbsp; <i
                                                         class="fa-solid fa-sort"></i></th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody *ngIf="projectsList.length > 0">
                                             <tr class="spaceUnder"
                                                 *ngFor="let project of projectsList |orderBy: key: reverse | paginate: {itemsPerPage: 10 , currentPage : p} ;">
                                                 <td style="width:10%;"> {{ project.nameProject }}</td>
                                                 <td style="width:15%;"> {{ project.descProject }}</td>
-                                                <td style="width:12%;"> {{ project.createdAtProject }} </td>
+                                                <td style="width:12%;"> {{ project.createdAtProject | date: 'dd/MM/yyyy' }} </td>
                                                 <td style="width:12%;">
-                                                    {{ project.expiredAtProject }}
+                                                    {{ project.expiredAtProject | date: 'dd/MM/yyyy' }}
                                                 </td>
                                                 <td style="width:10%;">
-                                                    {{ project.deadlineProject }}
+                                                    {{ project.deadlineProject | date: 'dd/MM/yyyy' }}
                                                 </td>
                                                 <td style="width:0%;text-align:center;">
                                                     <div class="badge badge-success badge-shadow ">{{
                                                         project.stateOfProject
                                                         }}</div>
                                                 </td>
-                                                <td style="width:5%;text-align:center;">
+                                                <td style="width:8%;text-align:center;align-items: center;">
                                                     <div class="badge badge-warning badge-shadow">{{
                                                         project.priorityOfProject
                                                         }}</div>
@@ -179,15 +179,23 @@
                                                         class="btn btn-sm btn-outline "
                                                         style=" margin : auto ; display:inline-block;justify-content: center;">Detail</a>-->
 
-                                                    <button type="button" class="btn btn-outline-info btn-sm"><i
+                                                    <button type="button" class="btn btn-outline-info btn-sm"
+                                                            (click)="deleteProject(project._id)"><i
                                                             class="fa-solid fa-trash-can"></i></button>
                                                     &nbsp;
-                                                    <button type="button" class="btn btn-outline-info btn-sm "><i
+                                                    <button type="button" class="btn btn-outline-info btn-sm "
+                                                            [routerLink]="['/Projects' , project._id]"><i
                                                             class="fa-solid fa-pen-to-square"></i></button>
 
                                                 </td>
                                             </tr>
                                         </tbody>
+                                        <div class="form-group" *ngIf="projectsList.length == 0">
+                                            <img alt="Image" height="300"
+                                                width="300" src="src/assets/img/aucuneElement.png" >
+                                            <h5 >Aucune projet</h5>
+                                        </div>
+                                        
                                         <!--padding-left:20%;padding-right:20%;-->
                                         <!--<pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>-->
                                     </table>

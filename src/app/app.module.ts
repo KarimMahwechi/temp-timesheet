@@ -28,6 +28,8 @@ import {ButtonModule} from 'primeng/button';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListProjectsComponent } from './intervention/projects/list-projects/list-projects.component';
+import { ProjectsComponent } from './intervention/projects/projects.component';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { ListProjectsComponent } from './intervention/projects/list-projects/lis
     ExpenseComponent,
     SecondModalComponent,
     TimeSheetComponent,
-    ListProjectsComponent
+    ListProjectsComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

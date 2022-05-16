@@ -1,1 +1,132 @@
+<div id="app">
+    <div class="main-content">
+        <section class="section" style="margin-top:-2%;">
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-12">
+                        <div class="card card-light">
+                            <div class="card-header" style="margin-top:1%;">
 
+                                <button class="btn btn-outline-primary mb-2 me-2" (click)="openSm(content)">Small
+                                    modal</button>
+
+                            </div>
+                            <!-- BEGIN : MODAL - ADD PROJECT -->
+                            <ng-template #content let-modal>
+                                <form [formGroup]="projectFormAdd" (ngSubmit)="addProject()">
+                                <div class="modal-header">
+                                    <div class="form-group col-md-9" style="margin-bottom:0%;">
+                                        <label class="modal-title" style="font-size: 16px;">Modifier un projet </label>
+                                    </div>
+                                    <button type="button" class="btn-close" aria-label="Close"
+                                        (click)="modal.dismiss('Cross click')"></button>
+                                </div>
+                                <div class="modal-body" style="margin-bottom:-5%;" >
+                                    <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <!--Nom-->
+                                                <label>Nom du projet</label>
+                                                <input type="text" class="form-control" id="inputTitre" formControlName="nameProject"
+                                                [ngClass]="
+                                                            (projectFormAdd.get('nameProject')?.touched ||
+                                                            projectFormAdd.get('nameProject')?.dirty) &&
+                                                            projectFormAdd.get('nameProject')?.hasError('required')
+                                                              ? 'is-invalid'
+                                                              : '' ||
+                                                              ((projectFormAdd.get('nameProject')?.touched ||
+                                                              projectFormAdd.get('nameProject')?.dirty) &&
+                                                              !projectFormAdd.get('nameProject')?.invalid)
+                                                                ? 'is-valid'
+                                                                : ''
+                                                            ">
+                                                <div class="invalid-feedback">Nom du projet est obligatoire </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <!--Priorité-->
+                                                <label>Priorité</label>
+                                                <select id="inputCategorie" class="custom-select form-control-sm" formControlName="priorityOfProject"
+                                                [ngClass]="
+                                                            (projectFormAdd.get('priorityOfProject')?.touched ||
+                                                            projectFormAdd.get('priorityOfProject')?.dirty) &&
+                                                            projectFormAdd.get('priorityOfProject')?.hasError('required')
+                                                              ? 'is-invalid'
+                                                              : '' ||
+                                                            ((projectFormAdd.get('priorityOfProject')?.touched ||
+                                                            projectFormAdd.get('priorityOfProject')?.dirty) &&
+                                                            !projectFormAdd.get('priorityOfProject')?.invalid)
+                                                              ? 'is-valid'
+                                                              : ''
+                                                            ">
+                                                    <option value="élevé">Élevé</option>
+                                                    <option value="normale">Normale</option>
+                                                    <option value="faible">faible</option>
+                                                </select>
+                                                <div class="invalid-feedback">Indication du priorité du projet est obligatoire </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <!--Date limite-->
+                                                <label>Date du création</label>
+                                                <input type="date" class="form-control" formControlName="createdAtProject"
+                                                [ngClass]="
+                                                (projectFormAdd.get('createdAtProject')?.touched ||
+                                                projectFormAdd.get('createdAtProject')?.dirty) &&
+                                                projectFormAdd.get('createdAtProject')?.hasError('required')
+                                                  ? 'is-invalid'
+                                                  : '' ||
+                                                ((projectFormAdd.get('createdAtProject')?.touched ||
+                                                projectFormAdd.get('createdAtProject')?.dirty) &&
+                                                !projectFormAdd.get('createdAtProject')?.invalid)
+                                                  ? 'is-valid'
+                                                  : ''
+                                                ">
+                                                <div class="invalid-feedback">L'indication de la date de création du projet est obligatoire </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <!--Date limite-->
+                                                <label>Date limilte</label>
+                                                <input type="date" min="{{projectFormAdd.get('createdAtProject')?.value | date:'yyyy-MM-dd'}}" class="form-control" formControlName="deadlineProject"
+                                                [ngClass]="
+                                                (projectFormAdd.get('deadlineProject')?.touched ||
+                                                projectFormAdd.get('deadlineProject')?.dirty) &&
+                                                projectFormAdd.get('deadlineProject')?.hasError('required')
+                                                  ? 'is-invalid'
+                                                  : '' ||
+                                                ((projectFormAdd.get('deadlineProject')?.touched ||
+                                                projectFormAdd.get('deadlineProject')?.dirty) &&
+                                                !projectFormAdd.get('deadlineProject')?.invalid)
+                                                  ? 'is-valid'
+                                                  : ''
+                                                ">
+                                                <div class="invalid-feedback">L'indication de la date limite du projet est obligatoire </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <!--Description -->
+                                                <label>Description du projet</label>
+                                                <textarea id="descProjet" class="form-control" name="descProjet"rows="1" cols="13" formControlName="descProject"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light"
+                                        (click)="modal.close('Close click')">Close</button>
+                                    <button type="submit" class="btn btn-primary"
+                                        [disabled]="projectFormAdd.invalid"
+                                        (click)="modal.close('Close click')">Sauvgarder</button>
+                                </div>
+                            </form>
+                            </ng-template>
+                            <!-- END : MODAL - ADD PROJECT-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

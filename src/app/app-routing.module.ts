@@ -25,8 +25,8 @@ const routes: Routes = [
   {path:'e',component:ExpenseComponent},
   {path:'ex',component:SecondModalComponent},
   {path:'time',component:TimeSheetComponent},
-  {path:'list',component:ListProjectsComponent},
-  {path:'pro',component: ProjectsComponent}
+  {path:'Projects',component:ListProjectsComponent},
+  {path:'Projects/:id',component: ProjectsComponent}
 
   
 ];
