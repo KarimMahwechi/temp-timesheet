@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectsService } from 'src/app/_services/projects.service';
 import { Project } from 'src/app/_models/project';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-projects',
@@ -11,7 +12,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
-
 
   minDate : Date = new Date();
   // membersList: Array<{Id: string, firstName: string, lastName:string,email:string,mobile:string,salary:string}> = [
@@ -43,20 +43,24 @@ export class ProjectsComponent implements OnInit {
   key : string ='id';
   reverse : boolean = false;
   /** */
-  projectFormAdd : FormGroup ;
+  projectForm : FormGroup ;
   /** */
   projectsList : Project[] = [];
   /** */
   id : string | null;
   /** */
+  /** */
   titleOfOperation : string ="";
-  constructor(private modalService: NgbModal,private formbuilder:FormBuilder,private _projectsService: ProjectsService , private aRouter : ActivatedRoute , private router : Router) {
-    this.projectFormAdd = this.formbuilder.group({
+  constructor(private modalService: NgbModal,private formbuilder:FormBuilder,private _projectsService: ProjectsService , private aRouter : ActivatedRoute , private toast : NgToastService) {
+    this.projectForm = this.formbuilder.group({
+      _id:['000000000000000000000000'],
       nameProject:['',Validators.required],
       descProject:['',Validators.required],
       createdAtProject:['',Validators.required],
       deadlineProject:['',Validators.required],
-      priorityOfProject:['',Validators.required]
+      expiredAtProject:[''],
+      priorityOfProject:['',Validators.required],
+      stateOfProject:['En cours']
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
   }
@@ -71,8 +75,7 @@ export class ProjectsComponent implements OnInit {
     // ]
 
     // this.projectsList1 = this.projects;
-    this.getProject()
-    
+    this.getAllProjects();
   }
 
   /** search the name of the project */
@@ -106,71 +109,140 @@ export class ProjectsComponent implements OnInit {
   deleteProject(id : any){
     this._projectsService.deleteProject(id).subscribe(data=> {
       console.log("Project has been removed");
+      this.toast.success({detail:"Projet supprimé avec succès",summary:"",duration:3000});
       this.getAllProjects();
     }, error => {
       console.log(error);
+      this.toast.error({detail:"Message d'erreur",summary:error,duration:3000});
     })
   }
 
-  /** retrieve project details */
-  addProject(){
-      /**
-      console.log(this.projectForm.get('nameProject')?.value);
-      console.log(this.projectForm.get('descProject')?.value);
-      console.log(this.projectForm.get('createdAtProject')?.value);
-      console.log(this.projectForm.get('deadlineProject')?.value);
-      console.log(this.projectForm.get('stateOfProject')?.value);
-      */
-     const addedProject : Project = {
-      nameProject : this.projectFormAdd.get('nameProject')?.value,
-      descProject : this.projectFormAdd.get('descProject')?.value,
-      createdAtProject : this.projectFormAdd.get('createdAtProject')?.value,
-      expiredAtProject : this.projectFormAdd.get('deadlineProject')?.value,
-      deadlineProject : this.projectFormAdd.get('deadlineProject')?.value,
-      stateOfProject : "En cours",
-      priorityOfProject : this.projectFormAdd.get('priorityOfProject')?.value
-     }
-    /** */
-    if (this.id !== null){
-    /** Edit project */
-    this._projectsService.editProject(this.id , addedProject).subscribe( data => {
-    this.router.navigate(['/Projects']);
-    }, error => {
-      console.log(error);
-      this.projectFormAdd.reset();
-     })
-    }else {
-    /** Add project */
-     this._projectsService.addProject(addedProject).subscribe(data => {
-      this.projectFormAdd.reset();
-       console.log('Project added ');
-       this.ngOnInit();
-     } , error => {
-      console.log(error);
-      this.projectFormAdd.reset();
-     })
-    }
-    // console.log(this.projectForm.value);
-    /** */
-    console.log(addedProject);    
-  }
+  // /** retrieve project details */
+  // addProject(){
+  //     /**
+  //     console.log(this.projectForm.get('nameProject')?.value);
+  //     console.log(this.projectForm.get('descProject')?.value);
+  //     console.log(this.projectForm.get('createdAtProject')?.value);
+  //     console.log(this.projectForm.get('deadlineProject')?.value);
+  //     console.log(this.projectForm.get('stateOfProject')?.value);
+  //     */
+  //    const addedProject : Project = {
+  //     nameProject : this.projectForm.get('nameProject')?.value,
+  //     descProject : this.projectForm.get('descProject')?.value,
+  //     createdAtProject : this.projectForm.get('createdAtProject')?.value,
+  //     expiredAtProject : this.projectForm.get('deadlineProject')?.value,
+  //     deadlineProject : this.projectForm.get('deadlineProject')?.value,
+  //     stateOfProject : "En cours",
+  //     priorityOfProject : this.projectForm.get('priorityOfProject')?.value
+  //    }
+  //   /** */
+  //   // console.log(this.projectForm.value);
+  //   /** */
+  //   console.log(addedProject);
+  //   /** */
+  //    this._projectsService.addProject(addedProject).subscribe(data => {
+  //     this.projectForm.reset();
+  //      console.log('Project added ');      
+  //      this.ngOnInit();
+  //      this.toast.success({detail:"Projet ajouteé avec succès",summary:"",duration:3000});
+  //    } , error => {
+  //     console.log(error);
+  //     this.toast.error({detail:"Message d'erreur",summary:error,duration:3000});
+  //     this.projectForm.reset();
+  //    })
+     
+  // }
   /** */
-  name : string =""
   getProject(){
     if (this.id !== null){
       this._projectsService.findProject(this.id).subscribe( data => {
-        this.projectFormAdd.setValue({
+        this.projectForm.setValue({
           nameProject : data.nameProject,
           descProject : data.descProject,
           createdAtProject : data.createdAtProject,
+          expiredAtProject : data.expiredAtProject,
           deadlineProject : data.deadlineProject,
+          stateOfProject : data.stateOfProject,
           priorityOfProject : data.priorityOfProject
-        });
+        })
       })
- 
     }
-    console.log(this.projectFormAdd.value);
   }
+  // ChangeData(project: Project) {
+
+  //   this.service.formCum.reset({
+  //     poleId: pole.poleId,
+  //     poleName: pole.poleName,
+  //     image: pole.image
+  //   });
+
+  // }
+  /** open the modal  */
+  openSmEdit(content : any , project : Project ) {
+    this.modalService.open(content, { size: 'lg' });
+    this.projectForm.reset({
+      _id : project._id,
+      nameProject : project.nameProject,
+      descProject : project.descProject,
+      createdAtProject : project.createdAtProject,
+      expiredAtProject : project.deadlineProject,
+      deadlineProject : project.deadlineProject,
+      stateOfProject : project.stateOfProject,
+      priorityOfProject : project.priorityOfProject
+    });
+    this.ngOnInit();
+  }
+
+  addProject(){
+    /**
+    console.log(this.projectForm.get('nameProject')?.value);
+    console.log(this.projectForm.get('descProject')?.value);
+    console.log(this.projectForm.get('createdAtProject')?.value);
+    console.log(this.projectForm.get('deadlineProject')?.value);
+    console.log(this.projectForm.get('stateOfProject')?.value);
+    */
+  //  const addedProject : Project = {
+  //   // _id : this.projectForm.get('_id')?.value,
+  //   // nameProject : this.projectForm.get('nameProject')?.value,
+  //   // descProject : this.projectForm.get('descProject')?.value,
+  //   // createdAtProject : this.projectForm.get('createdAtProject')?.value,
+  //   // expiredAtProject : this.projectForm.get('deadlineProject')?.value,
+  //   // deadlineProject : this.projectForm.get('deadlineProject')?.value,
+  //   // stateOfProject : "En cours",
+  //   // priorityOfProject : this.projectForm.get('priorityOfProject')?.value
+  //  }
+
+  /** */
+  if (this.projectForm.get('_id')?.value != "000000000000000000000000"){
+  /** Edit project */
+  console.log(this.projectForm.get('_id')?.value,"Aaslema");
+  this._projectsService.editProject(this.projectForm.get('_id')?.value , this.projectForm.value ).subscribe( data => {
+  // this.router.navigate(['/Projects']);
+  this.toast.success({detail:"Projet modifié avec succès",summary:"",duration:3000});
+  this.ngOnInit();
+  }, error => {
+    console.log(error);
+    this.toast.error({detail:"Message d'erreur",summary:error,duration:3000});
+    this.projectForm.reset();
+   })
+  }else {
+  /** Add project */
+   this._projectsService.addProject(this.projectForm.value).subscribe(data => {
+    this.projectForm.reset();
+     console.log('Project added ');
+     this.ngOnInit();
+     this.toast.success({detail:"Projet ajouté avec succès",summary:"",duration:3000});
+   } , error => {
+    console.log(error);
+    this.projectForm.reset();
+    this.toast.error({detail:"Message d'erreur",summary:error,duration:3000});
+   })
+  }
+  // console.log(this.projectForm.value);
+  /** */
+  // console.log(addedProject);    
+}
+
 
 
 }

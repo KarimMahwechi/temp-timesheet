@@ -7,11 +7,7 @@
                         <div class="card card-light">
                             <div class="card-header" style="margin-top:1%;">
                                 <h4><b> Liste de mes dépenses</b></h4>
-                                <button class="btn btn-info float-end " style="position:absolute;right:50px;">Nouveau
-                                    projet</button>
-                                <button class="btn btn-outline-primary mb-2 me-2" (click)="openSm(content)">Small
-                                    modal</button>
-
+                                <button class="btn btn-outline-info mb-2 me-2" style="position:absolute;right:50px;" (click)="openSm(content)"><i class="fa-solid fa-plus"></i>&nbsp;Nouveau projet</button>
                             </div>
                             <!-- BEGIN : MODAL - ADD PROJECT -->
                             <ng-template #content let-modal>
@@ -27,6 +23,8 @@
                                     <div class="form-group">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
+                                                <!-- ID -->
+                                                <input type="text"  hidden="" class="form-control" id="inputTitre" formControlName="_id">
                                                 <!--Nom-->
                                                 <label>Nom du projet</label>
                                                 <input type="text" class="form-control" id="inputTitre" formControlName="nameProject"
@@ -116,14 +114,14 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-light"
-                                        (click)="modal.close('Close click')">Close</button>
-                                    <button type="submit" class="btn btn-primary"
+                                        (click)="modal.close('Close click')">Annuler</button>
+                                    <button type="submit" class="btn btn-outline-info mb-2 me-2"
                                         [disabled]="projectForm.invalid"
                                         (click)="modal.close('Close click')">Sauvgarder</button>
                                 </div>
                             </form>
                             </ng-template>
-                            <!-- END : MODAL - ADD PROJECT-->
+                            <!-- END : MODAL - ADD PROJECT -->
                             <div class="card-body" style="margin-top:-1%;">
                                 <input type="search" class="form-control" name="categorie" placeholder="Enter your name"
                                     [(ngModel)]="searchedProject" (ngModelChange)="Search()" />
@@ -184,10 +182,9 @@
                                                             class="fa-solid fa-trash-can"></i></button>
                                                     &nbsp;
                                                     <button type="button" class="btn btn-outline-info btn-sm "
-                                                            [routerLink]="['/Projects' , project._id]"><i
-                                                            class="fa-solid fa-pen-to-square"></i></button>
-
+                                                            (click)="openSmEdit(content,project)"><i class="fa-solid fa-pen-to-square"></i></button>
                                                 </td>
+                                                <!--[routerLink]="['/Projects' , project._id]"-->
                                             </tr>
                                         </tbody>
                                         <div class="form-group" *ngIf="projectsList.length == 0">

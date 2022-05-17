@@ -1,14 +1,14 @@
 export class Project{
-    _idProject?:number;
-    nameProject:String;
-    descProject:String;
+    _id?:string;
+    nameProject:string;
+    descProject:string;
     createdAtProject:Date;
     expiredAtProject:Date;
     deadlineProject:Date;
-    stateOfProject:String;
-    priorityOfProject:String;
+    stateOfProject:string;
+    priorityOfProject:string;
 
-    constructor(nameProject:String,descProject:String,createdAtProject:Date,expiredAtProject:Date,deadlineProject:Date,stateOfProject:String,priorityOfProject:String){
+    constructor(nameProject:string,descProject:string,createdAtProject:Date,expiredAtProject:Date,deadlineProject:Date,stateOfProject:string,priorityOfProject:string){
         this.nameProject=nameProject;
         this.descProject=descProject;
         this.createdAtProject=createdAtProject;
