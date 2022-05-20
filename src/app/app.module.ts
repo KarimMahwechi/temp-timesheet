@@ -27,7 +27,6 @@ import {ButtonModule} from 'primeng/button';
 //api
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ListProjectsComponent } from './intervention/projects/list-projects/list-projects.component';
 import { ProjectsComponent } from './intervention/projects/projects.component';
 import { NgToastModule } from 'ng-angular-popup';
 
@@ -45,7 +44,6 @@ import { NgToastModule } from 'ng-angular-popup';
     ExpenseComponent,
     SecondModalComponent,
     TimeSheetComponent,
-    ListProjectsComponent,
     ProjectsComponent
   ],
   imports: [

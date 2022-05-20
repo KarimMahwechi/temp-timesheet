@@ -9,7 +9,77 @@ import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  // styleUrls: ['./projects.component.css']
+  encapsulation: ViewEncapsulation.None,
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: #292b2c;
+      color: white;
+    }
+    .dark-modal .close {
+      color: white;
+    }
+    .light-blue-backdrop {
+      background-color: #5cb3fd;
+    }
+    .badge {
+      border-radius:12px;
+    }
+    table #albums 
+    {
+    border-collapse:separate;
+    border-spacing:0 1rm;
+    }
+    #container{
+      display : flex ;
+      background-color:bisque;
+      align-content:center;
+      justify-content:center;
+      display:inline-block;
+    }
+
+    #container div {
+      background-color:white;
+      align-items: center ;
+      margin:5px;
+      padding:5px;
+      width:100%;
+      border-right: double;
+      display:inline-block;
+    }
+    .card-header{
+      background-color:white;
+      margin-left:30px;
+      margin-right:30px;
+      width:80%;
+      display:inline-block;
+    }
+    *{
+    /* font-family: 'Sofia Pro', sans-serif;  */
+    font-family: 'Manrope';
+    }
+
+    /** */
+    .ngx-pagination {
+    padding-left: 0px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    /**  .btn-info  */
+    .ngx-pagination .current {
+      background: #48dbfb !important;
+      border: transparent !important;
+      border-radius: 20px !important;
+    }
+
+    .ngx-pagination .current:hover {
+      background: #48dbfb !important;
+      border-radius: 20px !important; 
+      border: transparent !important;
+    }
+
+  `]
 })
 export class ProjectsComponent implements OnInit {
 
@@ -47,8 +117,9 @@ export class ProjectsComponent implements OnInit {
   /** */
   projectsList : Project[] = [];
   /** */
-  id : string | null;
+  // id : string | null;
   /** */
+  actualDate = new Date;
   /** */
   titleOfOperation : string ="";
   constructor(private modalService: NgbModal,private formbuilder:FormBuilder,private _projectsService: ProjectsService , private aRouter : ActivatedRoute , private toast : NgToastService) {
@@ -60,9 +131,9 @@ export class ProjectsComponent implements OnInit {
       deadlineProject:['',Validators.required],
       expiredAtProject:[''],
       priorityOfProject:['',Validators.required],
-      stateOfProject:['En cours']
+      stateOfProject:['',Validators.required]
     })
-    this.id = this.aRouter.snapshot.paramMap.get('id');
+    // this.id = this.aRouter.snapshot.paramMap.get('id');
   }
 
   ngOnInit(): void {
@@ -109,7 +180,8 @@ export class ProjectsComponent implements OnInit {
   deleteProject(id : any){
     this._projectsService.deleteProject(id).subscribe(data=> {
       console.log("Project has been removed");
-      this.toast.success({detail:"Projet supprimé avec succès",summary:"",duration:3000});
+      this.toast.success({detail:"Opération réalisée avec succès",summary:"Ce projet à supprimé avec succès",duration:3000});
+      
       this.getAllProjects();
     }, error => {
       console.log(error);
@@ -154,19 +226,19 @@ export class ProjectsComponent implements OnInit {
   // }
   /** */
   getProject(){
-    if (this.id !== null){
-      this._projectsService.findProject(this.id).subscribe( data => {
-        this.projectForm.setValue({
-          nameProject : data.nameProject,
-          descProject : data.descProject,
-          createdAtProject : data.createdAtProject,
-          expiredAtProject : data.expiredAtProject,
-          deadlineProject : data.deadlineProject,
-          stateOfProject : data.stateOfProject,
-          priorityOfProject : data.priorityOfProject
-        })
-      })
-    }
+    // if (this.id !== null){
+    //   this._projectsService.findProject(this.id).subscribe( data => {
+    //     this.projectForm.setValue({
+    //       nameProject : data.nameProject,
+    //       descProject : data.descProject,
+    //       createdAtProject : data.createdAtProject,
+    //       expiredAtProject : data.expiredAtProject,
+    //       deadlineProject : data.deadlineProject,
+    //       stateOfProject : data.stateOfProject,
+    //       priorityOfProject : data.priorityOfProject
+    //     })
+    //   })
+    // }
   }
   // ChangeData(project: Project) {
 
@@ -194,31 +266,32 @@ export class ProjectsComponent implements OnInit {
   }
 
   addProject(){
-    /**
+
     console.log(this.projectForm.get('nameProject')?.value);
     console.log(this.projectForm.get('descProject')?.value);
     console.log(this.projectForm.get('createdAtProject')?.value);
     console.log(this.projectForm.get('deadlineProject')?.value);
     console.log(this.projectForm.get('stateOfProject')?.value);
-    */
-  //  const addedProject : Project = {
-  //   // _id : this.projectForm.get('_id')?.value,
-  //   // nameProject : this.projectForm.get('nameProject')?.value,
-  //   // descProject : this.projectForm.get('descProject')?.value,
-  //   // createdAtProject : this.projectForm.get('createdAtProject')?.value,
-  //   // expiredAtProject : this.projectForm.get('deadlineProject')?.value,
-  //   // deadlineProject : this.projectForm.get('deadlineProject')?.value,
-  //   // stateOfProject : "En cours",
-  //   // priorityOfProject : this.projectForm.get('priorityOfProject')?.value
-  //  }
+
+   const addedProject : Project = {
+    _id : this.projectForm.get('_id')?.value,
+    nameProject : this.projectForm.get('nameProject')?.value,
+    descProject : this.projectForm.get('descProject')?.value,
+    createdAtProject : this.projectForm.get('createdAtProject')?.value,
+    expiredAtProject : this.projectForm.get('deadlineProject')?.value,
+    deadlineProject : this.projectForm.get('deadlineProject')?.value,
+    stateOfProject : this.projectForm.get('stateOfProject')?.value,
+    priorityOfProject : this.projectForm.get('priorityOfProject')?.value
+   }
 
   /** */
   if (this.projectForm.get('_id')?.value != "000000000000000000000000"){
   /** Edit project */
-  console.log(this.projectForm.get('_id')?.value,"Aaslema");
+  console.log(this.projectForm.get('_id')?.value);
   this._projectsService.editProject(this.projectForm.get('_id')?.value , this.projectForm.value ).subscribe( data => {
   // this.router.navigate(['/Projects']);
-  this.toast.success({detail:"Projet modifié avec succès",summary:"",duration:3000});
+  this.toast.success({detail:"Opération réalisée avec succès ...",summary:"Ce projet à modifié avec succès",duration:3000});
+  this.projectForm.reset();
   this.ngOnInit();
   }, error => {
     console.log(error);
@@ -227,11 +300,11 @@ export class ProjectsComponent implements OnInit {
    })
   }else {
   /** Add project */
-   this._projectsService.addProject(this.projectForm.value).subscribe(data => {
+   this._projectsService.addProject(addedProject).subscribe(data => {
     this.projectForm.reset();
      console.log('Project added ');
      this.ngOnInit();
-     this.toast.success({detail:"Projet ajouté avec succès",summary:"",duration:3000});
+     this.toast.success({detail:"Opération réalisée avec succès ...",summary:"Ce projet à ajouté avec succès",duration:5000});
    } , error => {
     console.log(error);
     this.projectForm.reset();
