@@ -7,8 +7,10 @@ export class Project{
     deadlineProject:Date;
     stateOfProject:string;
     priorityOfProject:string;
+    activatedProject:boolean;
+    typeOfProject:string;
 
-    constructor(nameProject:string,descProject:string,createdAtProject:Date,expiredAtProject:Date,deadlineProject:Date,stateOfProject:string,priorityOfProject:string){
+    constructor(nameProject:string,descProject:string,createdAtProject:Date,expiredAtProject:Date,deadlineProject:Date,stateOfProject:string,priorityOfProject:string , activatedProject:boolean , typeOfProject:string ){
         this.nameProject=nameProject;
         this.descProject=descProject;
         this.createdAtProject=createdAtProject;
@@ -16,5 +18,7 @@ export class Project{
         this.deadlineProject=deadlineProject;
         this.stateOfProject=stateOfProject;
         this.priorityOfProject=priorityOfProject;
+        this.activatedProject=activatedProject;
+        this.typeOfProject = typeOfProject ;
     }
 }

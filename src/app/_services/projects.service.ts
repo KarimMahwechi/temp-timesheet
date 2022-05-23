@@ -31,4 +31,8 @@ export class ProjectsService {
     return this.http.put(this.url + id , project);
   }
 
+  editProjectByState(id:string,project:Project):Observable<any>{
+    return this.http.put( this.url + "updateState/"  + id , project);
+  }
+
 }

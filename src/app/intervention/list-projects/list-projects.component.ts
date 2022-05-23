@@ -7,9 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  // styleUrls: ['./projects.component.css']
+  selector: 'app-list-projects',
+  templateUrl: './list-projects.component.html',
+  // styleUrls: ['./list-projects.component.css']
   encapsulation: ViewEncapsulation.None,
   styles: [`
     .dark-modal .modal-content {
@@ -81,7 +81,8 @@ import { NgToastService } from 'ng-angular-popup';
 
   `]
 })
-export class ProjectsComponent implements OnInit {
+export class ListProjectsComponent implements OnInit {
+
 
   minDate : Date = new Date();
   // membersList: Array<{Id: string, firstName: string, lastName:string,email:string,mobile:string,salary:string}> = [
@@ -114,6 +115,7 @@ export class ProjectsComponent implements OnInit {
   reverse : boolean = false;
   /** */
   projectForm : FormGroup ;
+  /** */ statuForm : FormGroup ;
   /** */
   projectsList : Project[] = [];
   /** */
@@ -132,8 +134,21 @@ export class ProjectsComponent implements OnInit {
       expiredAtProject:[''],
       priorityOfProject:['',Validators.required],
       stateOfProject:['',Validators.required],
-      activatedProject:[true],
+      activatedProject:[false],
       typeOfProject:['']
+    })
+    this.statuForm = this.formbuilder.group({
+      activateProject:[false]
+      // _id:['000000000000000000000000'],
+      // nameProject:['',Validators.required],
+      // descProject:['',Validators.required],
+      // createdAtProject:['',Validators.required],
+      // deadlineProject:['',Validators.required],
+      // expiredAtProject:[''],
+      // priorityOfProject:['',Validators.required],
+      // stateOfProject:['',Validators.required],
+      // activatedProject:[false],
+      // typeOfProject:['']
     })
     // this.id = this.aRouter.snapshot.paramMap.get('id');
   }
@@ -322,7 +337,44 @@ export class ProjectsComponent implements OnInit {
   /** */
   // console.log(addedProject);    
 }
+addAcProject(){
+  console.log(this.statuForm.value);
+}
 
+saveChange(_id : any , project : Project){
 
+  const addedProject : Project = {
+    _id : project._id,
+    nameProject : project.nameProject,
+    descProject : project.descProject,
+    createdAtProject : project.createdAtProject,
+    expiredAtProject : project.deadlineProject,
+    deadlineProject : project.deadlineProject,
+    stateOfProject : project.stateOfProject,
+    priorityOfProject : project.priorityOfProject,
+    typeOfProject : project.typeOfProject,
+    activatedProject : project.activatedProject
+    
+   }
+
+  console.log(addedProject);
+  console.log(this.statuForm.value);
+  console.log(_id);
+  if (addedProject.activatedProject === true){
+    addedProject.activatedProject = false ;
+  }else{
+    addedProject.activatedProject = true ;
+  }
+  console.log("%%%%");
+  console.log(addedProject);
+  this._projectsService.editProjectByState(_id , addedProject ).subscribe( data => {
+    // this.router.navigate(['/Projects']);
+    this.toast.success({detail:"Opération réalisée avec succès ...",summary:"Ce projet à modifié avec succès",duration:3000});
+    }, error => {
+      console.log(error);
+      this.toast.error({detail:"Message d'erreur",summary:error,duration:3000});
+      this.projectForm.reset();
+  });
+}
 
 }

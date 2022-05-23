@@ -31,13 +31,33 @@
                                     <div class="form-group col-md-9" style="margin-bottom:0%;">
                                         <label class="modal-title" style="font-size: 16px;">Ajouter un projet </label>
                                     </div>
+
                                     <button type="button" class="btn-close" aria-label="Close" data-dismiss="modal"
                                         (click)="modal.dismiss('Cross click')"></button>
                                 </div>
                                 <div class="modal-body" style="margin-bottom:-5%;" >
                                     <div class="form-group">
                                         <div class="form-row">
-                                            <div class="form-group col-md-6">
+                                            <!--<div class="form-group col-md-4">
+                                            <div class="pretty p-switch p-outline"  style="width:20%;position:absolute;left:100px;">
+                                                <input type="checkbox" formControlName="activatedProject"/>
+                                                <div class="state p-info">
+                                                    <label >Activier ce projet</label>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <div class="pretty p-switch p-slim" style="width:20%;position:absolute;right:20px;">
+                                                    <input type="checkbox"/>
+                                                    <div class="state p-info">
+                                                    <label style="font-size:12px">Activier ce projet</label>
+                                                    </div>
+                                                </div>
+                                            </div>-->
+
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
                                                 <!-- ID -->
                                                 <input type="text"  hidden="" class="form-control" id="inputTitre" formControlName="_id">
                                                 <!--Nom-->
@@ -57,7 +77,7 @@
                                                             ">
                                                 <div class="invalid-feedback">Nom du projet est obligatoire </div>
                                             </div>
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-4">
                                                 <!--Priorité-->
                                                 <label>Priorité</label>
                                                 <select id="inputCategorie" class="custom-select form-control-sm" formControlName="priorityOfProject"
@@ -79,9 +99,31 @@
                                                 </select>
                                                 <div class="invalid-feedback">Indication du priorité du projet est obligatoire </div>
                                             </div>
+                                            <div class="form-group col-md-4">
+                                                <!--Priorité-->
+                                                <label>Type du projet</label>
+                                                <select id="inputCategorie" class="custom-select form-control-sm" formControlName="typeOfProject"
+                                                [ngClass]="
+                                                            (projectForm.get('typeOfProject')?.touched ||
+                                                            projectForm.get('typeOfProject')?.dirty) &&
+                                                            projectForm.get('typeOfProject')?.hasError('required')
+                                                              ? 'is-invalid'
+                                                              : '' ||
+                                                            ((projectForm.get('typeOfProject')?.touched ||
+                                                            projectForm.get('typeOfProject')?.dirty) &&
+                                                            !projectForm.get('typeOfProject')?.invalid)
+                                                              ? 'is-valid'
+                                                              : ''
+                                                            ">
+                                                    <option value="facturable">Facturable</option>
+                                                    <option value="non facturable">Non facturable</option>
+                                                    <option value="interne">Interne</option>
+                                                </select>
+                                                <div class="invalid-feedback">Indication du type du projet est obligatoire </div>
+                                            </div>
                                         </div>
                                         <div class="form-row">
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-4">
                                                 <!--Date limite-->
                                                 <label>Date du création</label>
                                                 <input type="date"  min="{{actualDate | date:'yyyy-MM-dd'}}" class="form-control" formControlName="createdAtProject"
@@ -99,7 +141,7 @@
                                                 ">
                                                 <div class="invalid-feedback">L'indication de la date de création du projet est obligatoire </div>
                                             </div>
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-4">
                                                 <!--Date limite-->
                                                 <label>Date limilte</label>
                                                 <input type="date" min="{{projectForm.get('createdAtProject')?.value | date:'yyyy-MM-dd'}}" class="form-control" formControlName="deadlineProject"
@@ -117,9 +159,7 @@
                                                 ">
                                                 <div class="invalid-feedback">L'indication de la date limite du projet est obligatoire </div>
                                             </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-4">
                                                 <!--Priorité-->
                                                 <label>Statu</label>
                                                 <select id="inputCategorie" class="custom-select form-control-sm" formControlName="stateOfProject"
@@ -142,13 +182,32 @@
                                                 </select>
                                                 <div class="invalid-feedback">Indication du statu du projet est obligatoire </div>
                                             </div>
-                                            <div class="form-group col-md-6">
+                                        </div>
+                                        <div class="form-row">
+                                            
+                                            <div class="form-group col-md-12">
                                                 <!--Description -->
                                                 <label>Description du projet</label>
                                                 <textarea id="descProjet" class="form-control" name="descProjet"rows="1" cols="13" formControlName="descProject"></textarea>
-                                            </div>
+                                            </div> 
                                             
+                                            <!--<div class="pretty p-switch " style="position:absolute;right:20px;">
+                                                <input type="checkbox"/>
+                                                <div class="state p-info">
+                                                <label >Activier ce projet</label>
+                                                </div>
+                                            </div>  -->
+
+                                            <div class="pretty p-icon p-jelly p-round p-bigger" style="position:absolute;right:20px;">
+                                                <input type="checkbox" formControlName="activatedProject" checked />
+                                                <div class="state p-info">
+                                                  <i class="icon material-icons">done</i>
+                                                  <label >Activer ce projet</label>
+                                                </div>
+                                            </div>      
+                                              
                                         </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -163,9 +222,9 @@
                             <!-- END : MODAL - ADD PROJECT -->
                             <div class="card-body" style="margin-top:-1%;">
                                 <font size="2">
-                                    <table width="100%" class="table table-borderless table-light table-hover table-md" id="albums"
+                                    <table width="100%" class="table   table-hover " id="albums"
                                         cellspacing="0" border="1px">
-                                        <thead>
+                                        <thead class="table-light">
                                             <tr class="spaceUnder" border="1px">
                                                 <th (click)="sortField('nameProject')">Titre &nbsp; <i
                                                         class="fa-solid fa-sort"></i></th>
@@ -178,6 +237,8 @@
                                                 <th (click)="sortField('deadlineProject')">Date limite &nbsp; <i
                                                         class="fa-solid fa-sort"></i></th>
                                                 <th (click)="sortField('stateOfProject')">Statu &nbsp; <i
+                                                        class="fa-solid fa-sort"></i></th>
+                                                <th (click)="sortField('activatedProject')">Activé &nbsp; <i
                                                         class="fa-solid fa-sort"></i></th>
                                                 <th (click)="sortField('priorityOfProject')" style="text-align:center;"> Priorité &nbsp; <i
                                                         class="fa-solid fa-sort"></i></th>
@@ -196,6 +257,7 @@
                                                 <td style="width:10%;">
                                                     {{ project.deadlineProject | date: 'dd/MM/yyyy' }}
                                                 </td>
+
                                                 <td style="width:0%;text-align:center;" [ngSwitch]="project.stateOfProject">
                                                     <div class="badge badge-success badge-shadow ">{{ project.stateOfProject }}</div>
                                                     <!--*ngSwitchCase="'planifié'"-->
@@ -204,6 +266,10 @@
                                                     <div class="badge badge-danger badge-shadow " *ngSwitchCase="'suspendu'">{{ project.stateOfProject }}</div>
                                                     <div class="badge badge-success badge-shadow " *ngSwitchCase="'terminé'">{{ project.stateOfProject }}</div>
                                                     -->
+                                                </td>
+                                                <td style="width:7%;">
+                                                    <div class="badge badge-success badge-shadow " *ngIf="project.activatedProject===true"> Activé</div>
+                                                    <div class="badge badge-success badge-shadow " *ngIf="project.activatedProject===false"> Désactivé</div>
                                                 </td>
                                                 <td style="width:8%;text-align:center;align-items: center;">
                                                     <div class="badge badge-warning badge-shadow">{{

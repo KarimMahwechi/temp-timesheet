@@ -29,6 +29,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectsComponent } from './intervention/projects/projects.component';
 import { NgToastModule } from 'ng-angular-popup';
+import { ListProjectsComponent } from './intervention/list-projects/list-projects.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { NgToastModule } from 'ng-angular-popup';
     ExpenseComponent,
     SecondModalComponent,
     TimeSheetComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    ListProjectsComponent
   ],
   imports: [
     BrowserModule,
