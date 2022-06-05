@@ -30,7 +30,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectsComponent } from './intervention/projects/projects.component';
 import { NgToastModule } from 'ng-angular-popup';
 import { ListProjectsComponent } from './intervention/list-projects/list-projects.component';
+import { AgmCoreModule } from '@agm/core';
 
+// import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -62,8 +64,10 @@ import { ListProjectsComponent } from './intervention/list-projects/list-project
     ButtonModule,
     SplitButtonModule,
     FormsModule,
-    NgToastModule
-    
+    NgToastModule,
+    AgmCoreModule.forRoot({
+      apiKey:'AIzaSyA9LubTXiNZ2lMvFatoq8MG4xg88b3M2C8'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

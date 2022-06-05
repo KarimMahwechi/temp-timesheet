@@ -130,12 +130,12 @@ export class ListProjectsComponent implements OnInit {
       nameProject:['',Validators.required],
       descProject:['',Validators.required],
       createdAtProject:['',Validators.required],
-      deadlineProject:['',Validators.required],
-      expiredAtProject:[''],
       priorityOfProject:['',Validators.required],
       stateOfProject:['',Validators.required],
       activatedProject:[false],
-      typeOfProject:['']
+      typeOfProject:[''],
+      departmentProject:[''],
+      serviceLine:['']
     })
     this.statuForm = this.formbuilder.group({
       activateProject:[false]
@@ -274,12 +274,12 @@ export class ListProjectsComponent implements OnInit {
       nameProject : project.nameProject,
       descProject : project.descProject,
       createdAtProject : project.createdAtProject,
-      expiredAtProject : project.deadlineProject,
-      deadlineProject : project.deadlineProject,
       stateOfProject : project.stateOfProject,
       priorityOfProject : project.priorityOfProject,
       activatedProject : project.activatedProject,
-      typeOfProject : project.typeOfProject
+      typeOfProject : project.typeOfProject,
+      departmentProject : project.departmentProject,
+      serviceLine : project.serviceLine,
     });
     this.ngOnInit();
   }
@@ -296,13 +296,14 @@ export class ListProjectsComponent implements OnInit {
     _id : this.projectForm.get('_id')?.value,
     nameProject : this.projectForm.get('nameProject')?.value,
     descProject : this.projectForm.get('descProject')?.value,
-    createdAtProject : this.projectForm.get('createdAtProject')?.value,
-    expiredAtProject : this.projectForm.get('deadlineProject')?.value,
-    deadlineProject : this.projectForm.get('deadlineProject')?.value,
     stateOfProject : this.projectForm.get('stateOfProject')?.value,
     priorityOfProject : this.projectForm.get('priorityOfProject')?.value,
     activatedProject : this.projectForm.get('activatedProject')?.value,
-    typeOfProject : this.projectForm.get('typeOfProject')?.value
+    typeOfProject : this.projectForm.get('typeOfProject')?.value,
+    createdAtProject : this.projectForm.get('createdAtProject')?.value,
+    departmentProject : this.projectForm.get('departmentProject')?.value,
+    serviceLine : this.projectForm.get('serviceLine')?.value,
+
     
    }
 
@@ -348,13 +349,12 @@ saveChange(_id : any , project : Project){
     nameProject : project.nameProject,
     descProject : project.descProject,
     createdAtProject : project.createdAtProject,
-    expiredAtProject : project.deadlineProject,
-    deadlineProject : project.deadlineProject,
     stateOfProject : project.stateOfProject,
     priorityOfProject : project.priorityOfProject,
     typeOfProject : project.typeOfProject,
-    activatedProject : project.activatedProject
-    
+    activatedProject : project.activatedProject,
+    departmentProject : project.departmentProject,
+    serviceLine : project.serviceLine,
    }
 
   console.log(addedProject);

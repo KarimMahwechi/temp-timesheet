@@ -1,1 +1,66 @@
-<h1>Hello World</h1>
+<!--
+<div class="wrapper">
+  <div class="box-inputs">
+    <div>
+      <div id="geocoder" class="geocoder"></div>
+    </div>
+  </div>
+</div>
+<div id="map-mapbox" class="map-container"></div>
+-->
+<div class="wrapper">
+
+  <!--<button (click)="testMarker()" class="btn-route">Marcador</button>-->
+</div>
+<div class="wrapper">
+  <div class="box-inputs">
+    <table>
+      <tr>
+        <td>
+          <div>
+            <div id="geocoder" #asGeoCoder class="geocoder"></div>
+          </div>
+        </td>
+        <td>
+          <div>
+            <button (click)="drawRoute()" class="btn-route">Draw Path</button>
+          </div>
+        </td>
+        <!--
+        <td>
+          <div>
+            <button (click)="drawMarker()" class="btn-route">Marker</button>
+          </div>
+        </td>
+        -->
+        <td>
+          <div>
+            <div class="mock-label">{{distance | number : '1.2-2'}} KM</div>
+          </div>
+        </td>
+      </tr>
+    <!---->
+
+      <tr>
+        <td colspan="3">
+          <div (click)="changeMode('start')" [ngClass]="{'active-way':modeInput ==='start'}">
+            <div class="mock-label">Point initial :</div>
+            <div class="mock-input">{{ wayPoints?.start?.place_name }} </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <div (click)="changeMode('end')" [ngClass]="{'active-way':modeInput ==='end'}">
+            <div class="mock-label">Point final</div>
+            <div class="mock-input">{{ wayPoints?.end?.place_name }} </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <!---->
+  </div>
+</div> 
+<div class="wrapper">
+  <div id="map" #asMap class="map-container"></div>
+</div>

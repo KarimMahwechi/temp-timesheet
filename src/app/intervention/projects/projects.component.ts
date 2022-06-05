@@ -5,6 +5,7 @@ import { ProjectsService } from 'src/app/_services/projects.service';
 import { Project } from 'src/app/_models/project';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-projects',
@@ -119,7 +120,8 @@ export class ProjectsComponent implements OnInit {
   /** */
   // id : string | null;
   /** */
-  actualDate = new Date;
+  actualDate1 = new Date;
+
   /** */
   titleOfOperation : string ="";
   constructor(private modalService: NgbModal,private formbuilder:FormBuilder,private _projectsService: ProjectsService , private aRouter : ActivatedRoute , private toast : NgToastService) {
@@ -128,12 +130,12 @@ export class ProjectsComponent implements OnInit {
       nameProject:['',Validators.required],
       descProject:['',Validators.required],
       createdAtProject:['',Validators.required],
-      deadlineProject:['',Validators.required],
-      expiredAtProject:[''],
       priorityOfProject:['',Validators.required],
       stateOfProject:['',Validators.required],
       activatedProject:[true],
-      typeOfProject:['']
+      typeOfProject:[''],
+      departmentProject:[''],
+      serviceLine:['']
     })
     // this.id = this.aRouter.snapshot.paramMap.get('id');
   }
@@ -259,12 +261,12 @@ export class ProjectsComponent implements OnInit {
       nameProject : project.nameProject,
       descProject : project.descProject,
       createdAtProject : project.createdAtProject,
-      expiredAtProject : project.deadlineProject,
-      deadlineProject : project.deadlineProject,
       stateOfProject : project.stateOfProject,
       priorityOfProject : project.priorityOfProject,
       activatedProject : project.activatedProject,
-      typeOfProject : project.typeOfProject
+      typeOfProject : project.typeOfProject,
+      departmentProject : project.departmentProject,
+      serviceLine : project.serviceLine,
     });
     this.ngOnInit();
   }
@@ -282,12 +284,12 @@ export class ProjectsComponent implements OnInit {
     nameProject : this.projectForm.get('nameProject')?.value,
     descProject : this.projectForm.get('descProject')?.value,
     createdAtProject : this.projectForm.get('createdAtProject')?.value,
-    expiredAtProject : this.projectForm.get('deadlineProject')?.value,
-    deadlineProject : this.projectForm.get('deadlineProject')?.value,
     stateOfProject : this.projectForm.get('stateOfProject')?.value,
     priorityOfProject : this.projectForm.get('priorityOfProject')?.value,
     activatedProject : this.projectForm.get('activatedProject')?.value,
-    typeOfProject : this.projectForm.get('typeOfProject')?.value
+    typeOfProject : this.projectForm.get('typeOfProject')?.value,
+    departmentProject : this.projectForm.get('departmentProject')?.value,
+    serviceLine : this.projectForm.get('serviceLine')?.value,
     
    }
 
@@ -323,6 +325,7 @@ export class ProjectsComponent implements OnInit {
   // console.log(addedProject);    
 }
 
+today = new Date();
 
 
 }
