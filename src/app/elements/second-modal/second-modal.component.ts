@@ -17,7 +17,8 @@ import { MapCustomService } from 'src/app/_services/map-custom.service';
 
 export class SecondModalComponent implements OnInit{
 
-  distance : any = 0 ;
+  distance : any = 17 ;
+  test : boolean = false ;
   // @ViewChild('asGeoCoder') asGeoCoder: ElementRef ;
   @ViewChild('asGeoCoder', { static: false }) asGeoCoder: ElementRef<HTMLInputElement> = {} as ElementRef;
   modeInput = 'start';
@@ -85,7 +86,9 @@ export class SecondModalComponent implements OnInit{
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
     var d = R * c;
     console.log('=====> DISTANCE IS ===> :',d);
-    this.distance = d ; 
+    this.distance = d ;
+    this.mapCustomService.setDistanceBetweenPonits(this.distance);
+    console.log("BB -- ",this.mapCustomService.getDistanceBetweenPonits());
   } 
 
   toRad(Value : any ) {
@@ -98,7 +101,6 @@ export class SecondModalComponent implements OnInit{
 
   drawMarker() : void {
     // this.mapCustomService.addMarker([2.24952928272654 , 48.840082282161944]);
-
   }
 
 }

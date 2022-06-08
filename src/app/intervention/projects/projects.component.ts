@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { DatePipe } from '@angular/common';
 
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -124,7 +125,12 @@ export class ProjectsComponent implements OnInit {
 
   /** */
   titleOfOperation : string ="";
-  constructor(private modalService: NgbModal,private formbuilder:FormBuilder,private _projectsService: ProjectsService , private aRouter : ActivatedRoute , private toast : NgToastService) {
+
+  /** */
+
+
+
+  constructor(private modalService: NgbModal,private formbuilder:FormBuilder,private _projectsService: ProjectsService , private aRouter : ActivatedRoute , private toast : NgToastService ) {
     this.projectForm = this.formbuilder.group({
       _id:['000000000000000000000000'],
       nameProject:['',Validators.required],
@@ -151,6 +157,7 @@ export class ProjectsComponent implements OnInit {
 
     // this.projectsList1 = this.projects;
     this.getAllProjects();
+
   }
 
   /** search the name of the project */

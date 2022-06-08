@@ -19,6 +19,7 @@ export class MapCustomService {
   zoom = 3;
   wayPoints : Array<any> = [] ;
   markerDriver : any = null ;
+  distanceBetweenPonits : any ;
   constructor(private httpClient : HttpClient) { 
     this.mapbox.accessToken = environment.mapboxKey;
     // 'pk.eyJ1Ijoia2FyaW1tbW1tbW1tbW1tbW1tbW0iLCJhIjoiY2wzdTVtZmdzMGZqZzNubnZpMmw1cTRlayJ9.XMsoHYv1CnmUR7UoyOJe-g'
@@ -154,6 +155,14 @@ export class MapCustomService {
     .setLngLat(coords)
     .addTo(this.map);
     }
+  }
+
+  setDistanceBetweenPonits(data:any){
+    this.distanceBetweenPonits = data ;
+  }
+  
+  getDistanceBetweenPonits(){
+    return this.distanceBetweenPonits;
   }
   
 

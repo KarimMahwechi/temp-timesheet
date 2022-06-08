@@ -1,8 +1,9 @@
 import { Component, ElementRef, OnInit , ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import {NgbModal, ModalDismissReasons, NgbAccordionConfig, NgbActiveModal, NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
-
+import { MapCustomService } from 'src/app/_services/map-custom.service';
 @Component({
   selector: 'app-expense',
   templateUrl: './expense.component.html',
@@ -21,28 +22,30 @@ import {NgbModal, ModalDismissReasons, NgbAccordionConfig, NgbActiveModal, NgbDa
     .badge {
       border-radius:12px;
     }
-    table #albums 
+    /* table #albums 
     {
     border-collapse:separate;
     border-spacing:0 1rm;
-    }
-    #container{
+    background-color:cyan;
+    } */
+    /* #container{
       display : flex ;
       background-color:bisque;
       align-content:center;
       justify-content:center;
       display:inline-block;
-    }
+    } */
 
-    #container div {
-      background-color:white;
+    /* #container div {
+      background-color:red;
       align-items: center ;
       margin:5px;
       padding:5px;
       width:100%;
       border-right: double;
       display:inline-block;
-    }
+
+    } */
     .card-header{
       background-color:white;
       margin-left:30px;
@@ -120,6 +123,7 @@ export class ExpenseComponent implements OnInit {
   closeResult :any ="" ;
   isDisabled = false;
   urlFile : any ="assets/img/noFile.png";
+  urlFile1 : any ;
   /** */
   public fieldArray: Array<any> = [];
   private newAttribute: any = {};
@@ -133,10 +137,15 @@ export class ExpenseComponent implements OnInit {
   /** */
   public categories : Array<String> = ['Avion ','Carburant','Divers','Divertissement ' ,'Eau' ,'Frais postaux ', 'Gaz ', 'Hébergement' ,'Internet ' , 'Loyer', 'Matériel' , 'Parking' , 'Péage ' , 'Resturation' , 'Services' , 'Taxi' , 'Transport' ,' Téléphone ', 'Voiture '];
 
-  constructor(private modalService: NgbModal,private configAccor:NgbAccordionConfig,private formbuilder:FormBuilder ) {
+  /** */
+  distance : any = this.mapCustomService.getDistanceBetweenPonits() ;
 
+  /** */
+  PDF_File : any ="assets/img/guide pfe2021-2022 (1).pdf";
+  constructor(private modalService: NgbModal,private configAccor:NgbAccordionConfig,private formbuilder:FormBuilder , private mapCustomService : MapCustomService , private sanitizer : DomSanitizer) {
+    this.urlFile1 = sanitizer.bypassSecurityTrustUrl(this.urlFile);
 
-   }
+  }
 
   ngOnInit(): void {
     this.expensesList = [
@@ -180,6 +189,9 @@ export class ExpenseComponent implements OnInit {
       taxDepense:[''],
       fichierDepense:['']
     });
+    console.log("SS --",this.mapCustomService.getDistanceBetweenPonits());
+    this.distance = this.mapCustomService.getDistanceBetweenPonits() ;
+
   }
 
   Search(){
@@ -203,14 +215,25 @@ export class ExpenseComponent implements OnInit {
   }
 
   onSelectFile(e:any){
+    console.log("------> ",e.target.files[0].type);
+    // application/pdf
+    // image/png -- image/jpeg
+    
     if (e.target.files){
       var reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       reader.onload=(event:any)=>{
-        this.urlFile=event.target.result;
+        console.log("OOO",event.target.result);
+        console.log("OOOPPPOOO",this.urlFile);
+        this.urlFile1=event.target.result;
+        console.log("TTT",this.urlFile1);
       }
     }
   }
+
+  // photoURL(url : any ) {
+  //   return this.sanitizer.bypassSecurityTrustUrl(url);
+  // }
 
   @ViewChild('taxValue') taxValue!:ElementRef;
   triggerSomeEvent() {
@@ -267,5 +290,9 @@ export class ExpenseComponent implements OnInit {
   }
 
   /** */
+  printDistance(){
+    console.log("SS --",this.mapCustomService.getDistanceBetweenPonits());
+    this.distance = this.mapCustomService.getDistanceBetweenPonits() ;
+  }
 
 }
